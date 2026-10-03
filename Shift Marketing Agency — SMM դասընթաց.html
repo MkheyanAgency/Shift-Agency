@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Shift Marketing Agency — SMM դասընթաց</title>
+<meta name="description" content="Shift Marketing Agency-ի գործնական SMM դասընթացը՝ ռազմավարությունից ու կոնտենտից մինչև Meta Ads, պորտֆոլիո և վերջնական քննություն։">
+<meta name="theme-color" content="#050505">
+<meta name="color-scheme" content="dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Noto+Sans+Armenian:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          lime: { shift: '#b4f846', 500: '#84cc16', 600: '#22c55e' },
+          ink: '#050505',
+          panel: '#121316',
+          panel2: '#16181d'
+        },
+        fontFamily: {
+          sans: ['Montserrat', '"Noto Sans Armenian"', 'Inter', 'system-ui', 'sans-serif']
+        }
+      }
+    }
+  }
+</script>
+<script src="https://cdn.jsdelivr.net/npm/lucide@0.468.0/dist/umd/lucide.min.js"></script>
+<style>
+  :root {
+    --bg: #050505;
+    --panel: #121316;
+    --panel-2: #16181d;
+    --lime: #b4f846;
+    --text: #ffffff;
+    --muted: rgba(255,255,255,.62);
+    --glow: 0 0 20px rgba(180,248,70,.35);
+    box-sizing: border-box;
+    padding-top: env(safe-area-inset-top, 0px);
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) { --bg:#050505; --panel:#121316; --panel-2:#16181d; --lime:#b4f846; --text:#fff; --muted:rgba(255,255,255,.62); }
+  }
+  :root[data-theme="dark"] { --bg:#050505; --panel:#121316; --panel-2:#16181d; --lime:#b4f846; --text:#fff; --muted:rgba(255,255,255,.62); }
+
+  html { scroll-behavior: smooth; scroll-padding-top: calc(env(safe-area-inset-top, 0px) + 84px); }
+  html, body { min-height: 100%; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Montserrat', 'Noto Sans Armenian', system-ui, sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    background-image: radial-gradient(540px circle at var(--pointer-x, 50%) var(--pointer-y, 20%), rgba(180,248,70,.075), transparent 72%);
+    background-attachment: fixed;
+  }
+  ::selection { background: var(--lime); color: #050505; }
+
+  /* background grid + glow */
+  .grid-bg {
+    background-image:
+      linear-gradient(rgba(180,248,70,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(180,248,70,.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+            mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  }
+
+  /* logo */
+  .logo-wrap svg { transition: filter .3s ease, color .3s ease; }
+  .logo-wrap:hover svg { color: var(--lime); filter: drop-shadow(0 0 10px rgba(180,248,70,.7)); }
+  .logo-glow { filter: drop-shadow(0 0 18px rgba(180,248,70,.45)); }
+
+  /* navbar */
+  .glass-nav {
+    background: rgba(5,5,5,.6);
+    -webkit-backdrop-filter: blur(16px);
+            backdrop-filter: blur(16px);
+    border-bottom: 1px solid rgba(255,255,255,.08);
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .nav-link { position: relative; transition: color .25s; }
+  .nav-link::after {
+    content: ''; position: absolute; left: 0; bottom: -6px; height: 2px; width: 0;
+    background: var(--lime); box-shadow: var(--glow); transition: width .25s ease;
+  }
+  .nav-link:hover { color: var(--lime); }
+  .nav-link:hover::after { width: 100%; }
+
+  /* buttons */
+  .btn-lime {
+    background: var(--lime); color: #050505; font-weight: 800;
+    transition: transform .2s ease, box-shadow .25s ease, background .25s;
+  }
+  .btn-lime:hover { transform: translateY(-2px); box-shadow: 0 0 28px rgba(180,248,70,.6), 0 0 60px rgba(180,248,70,.25); }
+  .btn-lime:active { transform: translateY(0); }
+  .btn-lime:focus-visible, a:focus-visible, input:focus-visible, button:focus-visible {
+    outline: 2px solid var(--lime); outline-offset: 3px;
+  }
+
+  /* hero brackets */
+  .chev { color: var(--lime); text-shadow: 0 0 14px rgba(180,248,70,.8); font-weight: 900; letter-spacing: -.12em; }
+  .chev-r span, .chev-l span { display: inline-block; animation: pulse-chev 1.8s ease-in-out infinite; }
+  .chev-r span:nth-child(2) { animation-delay: .2s; } .chev-r span:nth-child(3) { animation-delay: .4s; }
+  .chev-l span:nth-child(2) { animation-delay: .2s; } .chev-l span:nth-child(1) { animation-delay: .4s; }
+  @keyframes pulse-chev { 0%,100% { opacity: .25; } 50% { opacity: 1; } }
+
+  .hero-in { animation: hero-in .9s cubic-bezier(.2,.8,.2,1) both; }
+  .hero-in.d1 { animation-delay: .12s; } .hero-in.d2 { animation-delay: .28s; }
+  .type-cursor { display: inline-block; width: .08em; height: .9em; margin-left: .12em; vertical-align: -.08em; background: var(--lime); animation: cursor-blink .8s steps(2,start) infinite; }
+  @keyframes cursor-blink { to { visibility: hidden; } }
+  @keyframes hero-in { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+
+  .scan {
+    position: absolute; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--lime), transparent);
+    opacity: .35; animation: scan 6s linear infinite;
+  }
+  @keyframes scan { from { top: 0; } to { top: 100%; } }
+
+  /* lesson cards */
+  .lesson {
+    position: relative;
+    background: linear-gradient(160deg, var(--panel-2), var(--panel));
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 16px;
+    transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease;
+    overflow: hidden;
+  }
+  .lesson::before {
+    content: ''; position: absolute; inset: 0 0 auto 0; height: 2px;
+    background: linear-gradient(90deg, var(--lime), transparent);
+    transform: scaleX(0); transform-origin: left; transition: transform .35s ease;
+  }
+  .lesson:hover, .lesson:focus-within {
+    transform: translateY(-4px);
+    border-color: #b4f846;
+    box-shadow: 0 0 20px rgba(180,248,70,.35);
+  }
+  .lesson:hover::before { transform: scaleX(1); }
+  .lesson .num {
+    color: var(--lime);
+    text-shadow: 0 0 16px rgba(180,248,70,.6);
+    font-weight: 900; line-height: 1;
+  }
+  .lesson[aria-expanded="true"] { border-color: rgba(180,248,70,.72); }
+  .lesson-trigger { width: 100%; text-align: left; }
+  .lesson-detail { color: rgba(255,255,255,.62); font-size: .8rem; line-height: 1.7; }
+  .tilt-card { transform-style: preserve-3d; will-change: transform; }
+  .tilt-card > * { transform: translateZ(18px); }
+  .lesson.final {
+    border-color: #b4f846;
+    box-shadow: 0 0 20px rgba(180,248,70,.35), inset 0 0 30px rgba(180,248,70,.08);
+    animation: final-glow 3s ease-in-out infinite;
+  }
+  .lesson.exam {
+    border-color: rgba(255,211,94,.7);
+    background: linear-gradient(145deg, rgba(255,211,94,.12), var(--panel));
+    box-shadow: 0 0 24px rgba(255,211,94,.2), inset 0 0 30px rgba(255,211,94,.05);
+    animation: exam-glow 3s ease-in-out infinite;
+  }
+  .lesson.exam .num { color: #ffd35e; text-shadow: 0 0 16px rgba(255,211,94,.55); }
+  @keyframes exam-glow { 50% { box-shadow: 0 0 34px rgba(255,211,94,.38), inset 0 0 36px rgba(255,211,94,.1); } }
+  @keyframes final-glow {
+    0%,100% { box-shadow: 0 0 16px rgba(180,248,70,.3), inset 0 0 24px rgba(180,248,70,.06); }
+    50%     { box-shadow: 0 0 30px rgba(180,248,70,.55), inset 0 0 36px rgba(180,248,70,.12); }
+  }
+
+  /* benefit panels */
+  .panel {
+    background: linear-gradient(160deg, var(--panel-2), var(--panel));
+    border: 1px solid rgba(255,255,255,.1);
+    border-radius: 24px;
+  }
+  .benefit-item { transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease; border: 1px solid rgba(255,255,255,.08); }
+  .benefit-item:hover { transform: translateY(-2px); border-color: rgba(180,248,70,.6); box-shadow: 0 0 20px rgba(180,248,70,.2); }
+  .icon-chip { background: rgba(180,248,70,.1); border: 1px solid rgba(180,248,70,.35); color: var(--lime); }
+
+  /* registration pill */
+  .reg-bar { background: var(--panel); border: 1px solid rgba(255,255,255,.12); transition: border-color .25s, box-shadow .25s; }
+  .reg-bar:focus-within { border-color: var(--lime); box-shadow: 0 0 24px rgba(180,248,70,.3); }
+
+  .social { border: 1px solid rgba(255,255,255,.12); transition: all .25s; }
+  .social:hover { color: #050505; background: var(--lime); border-color: var(--lime); box-shadow: var(--glow); transform: translateY(-2px); }
+  .social-badge { border: 1px solid rgba(180,248,70,.25); background: rgba(180,248,70,.06); color: rgba(255,255,255,.65); padding: .35rem .55rem; border-radius: 999px; font-size: .58rem; font-weight: 800; letter-spacing: .08em; }
+  .foot-link { color: var(--muted); transition: color .2s; }
+  .foot-link:hover { color: var(--lime); }
+  .team-card { background: linear-gradient(145deg, rgba(255,255,255,.075), rgba(255,255,255,.02)); border: 1px solid rgba(255,255,255,.1); }
+  .team-orbit { background: radial-gradient(circle at 35% 30%, rgba(180,248,70,.24), transparent 45%), linear-gradient(145deg, #1a1c23, #090a0c); }
+  .timer-box { background: rgba(0,0,0,.38); border: 1px solid rgba(180,248,70,.22); }
+  .reveal { transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); }
+  .js .reveal { opacity: 0; transform: translateY(24px); }
+  .js .reveal.is-visible { opacity: 1; transform: translateY(0); }
+  .field { background: rgba(0,0,0,.35); border: 1px solid rgba(255,255,255,.12); color: white; transition: border-color .2s, box-shadow .2s; }
+  .field:focus { outline: none; border-color: var(--lime); box-shadow: 0 0 0 3px rgba(180,248,70,.12); }
+  .field::placeholder { color: rgba(255,255,255,.38); }
+  .page-view { display: none; }
+  .page-view.active { display: block; animation: page-enter .45s cubic-bezier(.2,.8,.2,1) both; }
+  @keyframes page-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+  .page-indicator { width: 5px; height: 5px; border-radius: 999px; background: rgba(255,255,255,.24); transition: all .25s; }
+  .page-indicator[aria-current="page"] { width: 20px; background: var(--lime); box-shadow: var(--glow); }
+  .filter-chip { border: 1px solid rgba(255,255,255,.12); border-radius: 999px; padding: .7rem 1rem; color: rgba(255,255,255,.58); background: rgba(255,255,255,.03); font-size: .65rem; font-weight: 800; letter-spacing: .1em; transition: all .2s; }
+  .filter-chip:hover, .filter-chip.active { color: #050505; background: var(--lime); border-color: var(--lime); box-shadow: var(--glow); }
+  .case-visual { background: radial-gradient(ellipse at 28% 20%, rgba(180,248,70,.18), transparent 42%), linear-gradient(145deg, #1a1c23, #08090b); }
+  .metric-placeholder { border: 1px dashed rgba(255,255,255,.18); background: rgba(0,0,0,.22); }
+  .faq-item { border-bottom: 1px solid rgba(255,255,255,.09); }
+  .faq-answer[hidden] { display: none; }
+  .review-stars { color: #ffd35e; letter-spacing: .16em; }
+  .mobile-drawer { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .35s ease, opacity .25s ease; }
+  .mobile-drawer.open { max-height: 70vh; opacity: 1; }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ NAVBAR ============ -->
+<header class="fixed top-0 inset-x-0 z-50 glass-nav">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 h-16 md:h-20 flex items-center justify-between" aria-label="Հիմնական նավիգացիա">
+    <a href="#/home" data-route="home" class="logo-wrap text-white" aria-label="Shift — գլխավոր">
+      <img src="shift_sev-removebg-preview.png" alt="">
+    </a>
+
+    <div class="hidden lg:flex items-center gap-6 text-[11px] font-bold tracking-wide">
+      <a href="#/home" data-route="home" class="nav-link">ԳԼԽԱՎՈՐ / ԴԱՍԸՆԹԱՑ</a>
+      <a href="#/about" data-route="about" class="nav-link">ՄԵՐ ՄԱՍԻՆ ԵՎ ԹԻՄԸ</a>
+      <a href="#/cases" data-route="cases" class="nav-link">ՔԵՅՍԵՐ</a>
+      <a href="#/faq" data-route="faq" class="nav-link">ՀԱՐՑԵՐ</a>
+      <a href="#/contact" data-route="contact" class="nav-link">ԳՐԱՆՑՈՒՄ ԵՎ ԿԱՊ</a>
+    </div>
+
+    <div class="flex items-center gap-3">
+      <a href="#/contact" data-route="contact" class="btn-lime rounded-full px-4 md:px-6 py-2.5 text-[11px] md:text-xs">ԱՄՐԱԳՐԵԼ ՏԵՂԸ</a>
+      <div id="pageIndicators" class="hidden lg:flex items-center gap-1.5" aria-label="Էջի ընտրիչ">
+        <button class="page-indicator" type="button" data-indicator="home" aria-label="Գլխավոր էջ"></button>
+        <button class="page-indicator" type="button" data-indicator="about" aria-label="Մեր մասին և թիմը"></button>
+        <button class="page-indicator" type="button" data-indicator="cases" aria-label="Քեյսեր"></button>
+        <button class="page-indicator" type="button" data-indicator="faq" aria-label="Հարցեր և կարծիքներ"></button>
+        <button class="page-indicator" type="button" data-indicator="contact" aria-label="Գրանցում և կապ"></button>
+      </div>
+      <button id="menuBtn" class="lg:hidden w-10 h-10 grid place-items-center rounded-full border border-white/15 text-white" aria-label="Բացել մենյուն" aria-expanded="false" aria-controls="mobileMenu">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </nav>
+
+  <div id="mobileMenu" class="mobile-drawer lg:hidden border-t border-white/10 bg-black/95 backdrop-blur-xl" aria-hidden="true" inert>
+    <div class="px-6 py-6 flex flex-col gap-5 text-sm font-bold">
+      <a href="#/home" data-route="home" class="mob-link hover:text-lime-shift">ԳԼԽԱՎՈՐ / ԴԱՍԸՆԹԱՑ</a>
+      <a href="#/about" data-route="about" class="mob-link hover:text-lime-shift">ՄԵՐ ՄԱՍԻՆ ԵՎ ԹԻՄԸ</a>
+      <a href="#/cases" data-route="cases" class="mob-link hover:text-lime-shift">ՔԵՅՍԵՐ</a>
+      <a href="#/faq" data-route="faq" class="mob-link hover:text-lime-shift">ՀԱՐՑԵՐ ԵՎ ԿԱՐԾԻՔՆԵՐ</a>
+      <a href="#/contact" data-route="contact" class="mob-link hover:text-lime-shift">ԳՐԱՆՑՈՒՄ ԵՎ ԿԱՊ</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+<div class="page-view active" id="page-home" data-page="home">
+
+<!-- ============ HERO ============ -->
+<section class="relative min-h-[100svh] flex items-center justify-center overflow-hidden pt-24 pb-16">
+  <div class="absolute inset-0 grid-bg pointer-events-none"></div>
+  <div class="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[620px] max-w-[120vw] h-[620px] rounded-full pointer-events-none"
+       style="background: radial-gradient(circle, rgba(180,248,70,.16), transparent 62%);"></div>
+  <div class="scan pointer-events-none"></div>
+
+  <div class="relative z-10 max-w-6xl mx-auto px-5 text-center">
+    <h1 id="heroHeadline" class="hero-in text-3xl sm:text-5xl lg:text-6xl font-black leading-[1.15] max-w-4xl mx-auto" aria-label="Դարձիր Շուկայի Ամենապահանջված SMM Մասնագետը">
+      <span id="typedHeadline" aria-hidden="true">Դարձիր Շուկայի Ամենապահանջված SMM Մասնագետը</span><span class="type-cursor" aria-hidden="true"></span>
+    </h1>
+    <p class="hero-in d1 mt-6 max-w-2xl mx-auto text-sm sm:text-base leading-7 text-white/60">Գործնական դասընթաց՝ ռազմավարությունից ու կոնտենտից մինչև Meta Ads, պորտֆոլիո և քննություն։</p>
+
+    <div class="hero-in d1 mt-12 md:mt-16 flex items-center justify-center gap-2 sm:gap-6">
+      <div class="chev chev-r hidden min-[420px]:block text-3xl sm:text-6xl md:text-7xl select-none" aria-hidden="true"><span>&gt;</span><span>&gt;</span><span>&gt;</span></div>
+      <div class="logo-wrap text-white logo-glow">
+        <svg class="h-14 sm:h-24 md:h-32 w-auto" viewBox="0 0 1000 300" fill="currentColor" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Shift">
+          <path d="M 50 160 C 50 140 70 130 110 130 L 230 130 L 210 170 L 120 170 C 95 170 85 175 85 185 C 85 195 95 200 120 200 L 190 200 C 240 200 260 220 250 250 C 240 280 200 295 150 295 L 40 295 L 60 255 L 150 255 C 175 255 185 250 185 240 C 185 230 175 225 150 225 L 80 225 C 55 220 50 190 50 160 Z"/>
+          <path d="M 330 130 L 370 130 L 330 295 L 290 295 Z M 350 200 L 440 200 L 430 240 L 340 240 Z M 440 130 L 480 130 L 440 295 L 400 295 Z"/>
+          <path d="M 490 130 L 530 130 L 490 295 L 450 295 Z"/>
+          <path d="M 540 130 L 670 130 L 700 150 L 670 170 L 530 170 Z M 520 190 L 630 190 L 610 230 L 510 230 Z M 500 255 L 590 255 L 580 295 L 490 295 Z"/>
+          <path d="M 700 130 L 820 130 L 810 170 L 770 170 L 740 295 L 700 295 L 730 170 L 690 170 Z"/>
+        </svg>
+      </div>
+      <div class="chev chev-l hidden min-[420px]:block text-3xl sm:text-6xl md:text-7xl select-none" aria-hidden="true" style="transform: scaleX(-1)"><span>&gt;</span><span>&gt;</span><span>&gt;</span></div>
+    </div>
+    <p class="hero-in d1 mt-3 text-[11px] sm:text-sm font-bold text-white/50 tracking-[.35em]">SMM COURSE · 2026</p>
+
+    <div class="hero-in d2 mt-12">
+      <a href="#register" class="btn-lime inline-flex items-center gap-3 rounded-full px-8 sm:px-12 py-4 sm:py-5 text-sm sm:text-base">
+        ԱՄՐԱԳՐԵԼ ՏԵՂԸ
+        <i data-lucide="arrow-right" class="w-5 h-5"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROGRAM ============ -->
+<section id="program" class="relative py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-12 md:mb-16">
+      <h2 class="text-3xl md:text-5xl font-black">ԴԱՍԸՆԹԱՑԻ ԾՐԱԳԻՐ</h2>
+      <div class="mx-auto mt-5 h-1 w-24 rounded-full" style="background:#b4f846; box-shadow:0 0 20px rgba(180,248,70,.35)"></div>
+    </div>
+
+    <div id="lessons" class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-5"></div>
+  </div>
+</section>
+
+<!-- ============ BENEFITS ============ -->
+<section id="benefits" class="relative py-20 md:py-28">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-6 md:gap-8">
+
+    <div class="panel p-6 sm:p-9">
+      <h2 class="text-2xl sm:text-3xl font-black mb-7">ՈՒՄ ՀԱՄԱՐ Է</h2>
+      <ul class="space-y-3">
+        <li class="benefit-item flex items-center gap-4 rounded-2xl bg-black/30 p-4">
+          <span class="icon-chip w-12 h-12 shrink-0 rounded-xl grid place-items-center"><i data-lucide="rocket" class="w-6 h-6"></i></span>
+          <div><p class="font-bold">Ստարտափներ</p><p class="text-sm text-white/55">Կառուցիր բրենդի ներկայությունը սկզբից</p></div>
+        </li>
+        <li class="benefit-item flex items-center gap-4 rounded-2xl bg-black/30 p-4">
+          <span class="icon-chip w-12 h-12 shrink-0 rounded-xl grid place-items-center"><i data-lucide="laptop" class="w-6 h-6"></i></span>
+          <div><p class="font-bold">Ֆրիլանսերներ</p><p class="text-sm text-white/55">Ձեռք բեր պահանջված մասնագիտություն</p></div>
+        </li>
+        <li class="benefit-item flex items-center gap-4 rounded-2xl bg-black/30 p-4">
+          <span class="icon-chip w-12 h-12 shrink-0 rounded-xl grid place-items-center"><i data-lucide="briefcase" class="w-6 h-6"></i></span>
+          <div><p class="font-bold">Բիզնեսի սեփականատերեր</p><p class="text-sm text-white/55">Ինքդ կառավարիր քո սոցիալական ցանցերը</p></div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="panel p-6 sm:p-9" style="border-color: rgba(180,248,70,.25)">
+      <h2 class="text-2xl sm:text-3xl font-black mb-7">ԻՆՉ ԿՍՏԱՆԱՍ</h2>
+      <ul class="space-y-3">
+        <li class="benefit-item flex items-center gap-4 rounded-2xl bg-black/30 p-4">
+          <span class="icon-chip w-12 h-12 shrink-0 rounded-xl grid place-items-center"><i data-lucide="folder-kanban" class="w-6 h-6"></i></span>
+          <div><p class="font-bold">Պորտֆոլիո</p><p class="text-sm text-white/55">Պատրաստի աշխատանքներ և CV</p></div>
+        </li>
+        <li class="benefit-item flex items-center gap-4 rounded-2xl bg-black/30 p-4">
+          <span class="icon-chip w-12 h-12 shrink-0 rounded-xl grid place-items-center"><i data-lucide="badge-check" class="w-6 h-6"></i></span>
+          <div><p class="font-bold">Վերիֆիկացված թրեյներ</p><p class="text-sm text-white/55">Սովորիր պրակտիկ փորձ ունեցող մասնագետից</p></div>
+        </li>
+        <li class="benefit-item flex items-center gap-4 rounded-2xl bg-black/30 p-4">
+          <span class="icon-chip w-12 h-12 shrink-0 rounded-xl grid place-items-center"><i data-lucide="cpu" class="w-6 h-6"></i></span>
+          <div><p class="font-bold">Հմտություններ</p><p class="text-sm text-white/55">Canva, Meta Ads, քոնթենտ-ռազմավարություն</p></div>
+        </li>
+        <li class="benefit-item flex items-center gap-4 rounded-2xl bg-black/30 p-4">
+          <span class="icon-chip w-12 h-12 shrink-0 rounded-xl grid place-items-center"><i data-lucide="users" class="w-6 h-6"></i></span>
+          <div><p class="font-bold">Համայնքի հասանելիություն</p><p class="text-sm text-white/55">Կապեր ուսանողների և մասնագետների հետ</p></div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="h-1" aria-hidden="true"></div>
+</div>
+
+<div class="page-view" id="page-about" data-page="about">
+<section class="relative pt-32 pb-10 md:pt-40 md:pb-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <p class="text-xs font-extrabold tracking-[.28em] text-lime-shift mb-5">ABOUT SHIFT</p>
+    <h1 class="max-w-5xl text-4xl sm:text-6xl md:text-7xl font-black leading-[1.08]">Մենք օգնում ենք բրենդներին <span class="text-lime-shift">շարժվել առաջ։</span></h1>
+    <div class="mt-10 grid md:grid-cols-[1.1fr_.9fr] gap-8 md:gap-16 items-end">
+      <p class="text-base md:text-xl leading-8 text-white/65">Shift Marketing Agency-ը ստեղծագործական և թվային մարքեթինգի ուղղությամբ աշխատող գործակալություն է։ Մենք միավորում ենք ռազմավարությունը, բովանդակությունն ու performance մոտեցումը՝ բիզնեսի իրական նպատակների շուրջ։</p>
+      <div class="panel p-6 md:p-8">
+        <p class="text-xs font-extrabold tracking-[.2em] text-lime-shift mb-3">ՄԵՐ ՄՈՏԵՑՈՒՄԸ</p>
+        <p class="text-sm leading-7 text-white/60">Հետազոտել։ Հստակեցնել նպատակը։ Ստեղծել համապատասխան հաղորդակցություն։ Չափել արդյունքը՝ միայն իրական տվյալներով։</p>
+      </div>
+    </div>
+    <div class="mt-10 grid md:grid-cols-3 gap-4">
+      <article class="panel p-6 reveal"><p class="text-xs font-extrabold tracking-[.2em] text-lime-shift mb-3">OUR STORY</p><h2 class="text-lg font-black mb-2">Մեր պատմությունը</h2><p class="text-sm leading-6 text-white/55">Shift-ը ներկայացնում է թվային մարքեթինգի և գործնական կրթության ուղղությունը։ Մանրամասն ժամանակագրությունը կհրապարակվի թիմի հաստատումից հետո։</p></article>
+      <article class="panel p-6 reveal"><p class="text-xs font-extrabold tracking-[.2em] text-lime-shift mb-3">OUR VISION</p><h2 class="text-lg font-black mb-2">Մեր տեսլականը</h2><p class="text-sm leading-6 text-white/55">Մարքեթինգը կապել ստեղծագործական մտածողության, ռազմավարության և չափելի բիզնես նպատակների հետ։</p></article>
+      <article class="panel p-6 reveal"><p class="text-xs font-extrabold tracking-[.2em] text-lime-shift mb-3">OUR CULTURE</p><h2 class="text-lg font-black mb-2">Մեր մշակույթը</h2><p class="text-sm leading-6 text-white/55">Համագործակցություն, շարունակական փորձարկում և թափանցիկ վերաբերմունք տվյալների նկատմամբ։</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEAM ============ -->
+<section id="team" class="relative py-20 md:py-28">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-5 mb-12">
+      <div>
+        <p class="text-xs font-extrabold tracking-[.28em] text-lime-shift uppercase mb-4">SHIFT MARKETING AGENCY</p>
+        <h2 class="text-3xl md:text-5xl font-black">ՄԵՐ ԹԻՄԸ</h2>
+      </div>
+      <p class="max-w-xl text-sm md:text-base leading-7 text-white/55">Գործակալության թիմի մասնագիտացումները ծածկում են ռազմավարությունը, բովանդակությունն ու վճարովի գովազդը։ Մասնագետների անունները կներկայացվեն հաստատված կազմի հրապարակումից հետո։</p>
+    </div>
+    <div class="grid sm:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-5">
+      <article class="team-card tilt-card rounded-3xl p-6 md:p-7 min-h-[270px] flex flex-col justify-between reveal">
+        <div class="team-orbit w-16 h-16 rounded-2xl grid place-items-center text-lime-shift"><i data-lucide="target" class="w-7 h-7"></i></div>
+        <div>
+          <p class="text-[10px] tracking-[.24em] text-lime-shift font-extrabold mb-2">STRATEGY</p>
+          <h3 class="text-xl font-black mb-2">SMM մենթորներ</h3>
+          <p class="text-sm leading-6 text-white/55">Աուդիտորիա, նպատակներ, բրիֆ և բովանդակության պլանավորում։</p>
+          <div class="flex gap-2 mt-5"><span class="social-badge">BRIEF</span><span class="social-badge">SMART</span></div>
+        </div>
+      </article>
+      <article class="team-card tilt-card rounded-3xl p-6 md:p-7 min-h-[270px] flex flex-col justify-between reveal">
+        <div class="team-orbit w-16 h-16 rounded-2xl grid place-items-center text-lime-shift"><i data-lucide="pen-tool" class="w-7 h-7"></i></div>
+        <div>
+          <p class="text-[10px] tracking-[.24em] text-lime-shift font-extrabold mb-2">CREATIVE</p>
+          <h3 class="text-xl font-black mb-2">Վիզուալ մասնագետներ</h3>
+          <p class="text-sm leading-6 text-white/55">Սցենարներ, պատմություններ և սոցիալական հարթակների համար ստեղծագործական նյութեր։</p>
+          <div class="flex gap-2 mt-5"><span class="social-badge">CONTENT</span><span class="social-badge">STORYTELLING</span></div>
+        </div>
+      </article>
+      <article class="team-card tilt-card rounded-3xl p-6 md:p-7 min-h-[270px] flex flex-col justify-between reveal">
+        <div class="team-orbit w-16 h-16 rounded-2xl grid place-items-center text-lime-shift"><i data-lucide="camera" class="w-7 h-7"></i></div>
+        <div>
+          <p class="text-[10px] tracking-[.24em] text-lime-shift font-extrabold mb-2">CONTENT</p>
+          <h3 class="text-xl font-black mb-2">Կոնտենտ ստեղծողներ</h3>
+          <p class="text-sm leading-6 text-white/55">Instagram-ի բովանդակություն, Canva, storytelling և վաճառող տեքստեր։</p>
+          <div class="flex gap-2 mt-5"><span class="social-badge">INSTAGRAM</span><span class="social-badge">CANVA</span></div>
+        </div>
+      </article>
+      <article class="team-card tilt-card rounded-3xl p-6 md:p-7 min-h-[270px] flex flex-col justify-between reveal">
+        <div class="team-orbit w-16 h-16 rounded-2xl grid place-items-center text-lime-shift"><i data-lucide="bar-chart-3" class="w-7 h-7"></i></div>
+        <div>
+          <p class="text-[10px] tracking-[.24em] text-lime-shift font-extrabold mb-2">PERFORMANCE</p>
+          <h3 class="text-xl font-black mb-2">Մեդիա բայերներ</h3>
+          <p class="text-sm leading-6 text-white/55">Business Suite, Ads Manager և գովազդային արշավների հիմունքներ։</p>
+          <div class="flex gap-2 mt-5"><span class="social-badge">META</span><span class="social-badge">ADS MANAGER</span></div>
+        </div>
+      </article>
+    </div>
+    <p class="mt-5 text-xs text-white/35">Անհատական կենսագրություններ և սոցիալական հղումներ կհրապարակվեն միայն թիմի հաստատումից հետո։</p>
+  </div>
+</section>
+
+<section class="relative pb-16 md:pb-24">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="grid sm:grid-cols-3 gap-4">
+      <article class="panel p-6 reveal"><p class="text-xs font-bold tracking-widest text-white/40">ԱԿՏԻՎ ՀԱՃԱԽՈՐԴՆԵՐ</p><p class="verified-stat mt-3 text-4xl font-black text-lime-shift" data-stat="activeClients">—</p><p class="mt-2 text-xs text-white/45">Հրապարակման ենթակա հաստատված թիվ</p></article>
+      <article class="panel p-6 reveal"><p class="text-xs font-bold tracking-widest text-white/40">ԿԱՌԱՎԱՐՎԱԾ ԳՈՎԱԶԴԱՅԻՆ ԲՅՈՒՋԵ</p><p class="verified-stat mt-3 text-4xl font-black text-lime-shift" data-stat="mediaBudget">—</p><p class="mt-2 text-xs text-white/45">Հրապարակման ենթակա հաստատված թիվ</p></article>
+      <article class="panel p-6 reveal"><p class="text-xs font-bold tracking-widest text-white/40">ԱՎԱՐՏԱԾ ՈՒՍԱՆՈՂՆԵՐ</p><p class="verified-stat mt-3 text-4xl font-black text-lime-shift" data-stat="studentsGraduated">—</p><p class="mt-2 text-xs text-white/45">Հրապարակման ենթակա հաստատված թիվ</p></article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VALUE ============ -->
+<section id="value" class="relative py-12 md:py-20">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="panel relative overflow-hidden p-7 sm:p-10 md:p-14 reveal">
+      <div class="absolute -right-16 -top-28 w-80 h-80 rounded-full pointer-events-none" style="background:radial-gradient(circle,rgba(180,248,70,.16),transparent 68%)"></div>
+      <div class="relative grid md:grid-cols-[1.2fr_.8fr] gap-8 md:gap-14 items-center">
+        <div>
+          <p class="text-xs font-extrabold tracking-[.25em] text-lime-shift mb-4">YOUR NEXT SHIFT</p>
+          <h2 class="text-3xl md:text-5xl font-black leading-tight">Ներդրում քո նոր հմտությունների մեջ</h2>
+          <p class="mt-5 max-w-xl text-sm md:text-base leading-7 text-white/55">15 գործնական դաս, վերջնական քննություն և պորտֆոլիոյի պատրաստում։ Դասընթացի արժեքն ու մեկնարկի օրը կհաստատվեն գրանցման հայտից հետո։</p>
+        </div>
+        <div class="md:text-right">
+          <p class="text-xs font-bold tracking-[.18em] text-white/45 mb-3">ԱՐԺԵՔ</p>
+          <p class="text-2xl sm:text-3xl font-black">Կհայտարարվի շուտով</p>
+          <a href="#register" class="btn-lime mt-6 inline-flex items-center gap-2 rounded-full px-7 py-4 text-sm">ՀԱՅՏ ԹՈՂՆԵԼ <i data-lucide="arrow-down-right" class="w-4 h-4"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<div class="page-view" id="page-cases" data-page="cases">
+<section class="relative pt-32 pb-12 md:pt-40 md:pb-16">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6">
+    <p class="text-xs font-extrabold tracking-[.28em] text-lime-shift mb-5">SELECTED WORK</p>
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-black">ՔԵՅՍԵՐ ԵՎ ՊՈՐՏՖՈԼԻՈ</h1>
+    <p class="mt-5 max-w-2xl text-sm md:text-base leading-7 text-white/55">Արդյունքները ցուցադրելու համար պետք են հրապարակման թույլտվություն և ստուգելի տվյալներ։ Մինչ այդ՝ ոլորտները ներկայացված են որպես case-study ձևանմուշներ, ոչ թե պնդումներ իրականացված հաճախորդների մասին։</p>
+    <div id="caseFilters" class="mt-8 flex flex-wrap gap-2">
+      <button class="filter-chip active" type="button" data-filter="all">ԲՈԼՈՐԸ</button>
+      <button class="filter-chip" type="button" data-filter="food">ՌԵՍՏՈՐԱՆՆԵՐ</button>
+      <button class="filter-chip" type="button" data-filter="real-estate">ԱՆՇԱՐԺ ԳՈՒՅՔ</button>
+      <button class="filter-chip" type="button" data-filter="ecommerce">E-COMMERCE</button>
+      <button class="filter-chip" type="button" data-filter="beauty">BEAUTY</button>
+    </div>
+    <div id="caseGrid" class="mt-8 grid md:grid-cols-2 gap-5"></div>
+  </div>
+</section>
+</div>
+
+<div class="page-view" id="page-faq" data-page="faq">
+<section class="relative pt-32 pb-12 md:pt-40 md:pb-16">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <p class="text-xs font-extrabold tracking-[.28em] text-lime-shift mb-5">GOOD QUESTIONS</p>
+    <h1 class="text-4xl sm:text-6xl md:text-7xl font-black">ՀԱՐՑԵՐ ԵՎ ԿԱՐԾԻՔՆԵՐ</h1>
+    <div class="mt-12 grid lg:grid-cols-[1.1fr_.9fr] gap-10">
+      <div class="panel p-6 sm:p-8">
+        <h2 class="text-xl sm:text-2xl font-black mb-5">ՀԱՃԱԽ ՏՐՎՈՂ ՀԱՐՑԵՐ</h2>
+        <div id="faqList" class="divide-y divide-white/10"></div>
+      </div>
+      <aside class="panel p-6 sm:p-8">
+        <p class="text-xs font-extrabold tracking-[.2em] text-lime-shift mb-3">STUDENT STORIES</p>
+        <h2 class="text-2xl font-black">Ուսանողների կարծիքներ</h2>
+        <div id="testimonials" class="mt-6"></div>
+        <p class="mt-5 text-xs leading-6 text-white/40">Կարծիքները կհրապարակվեն միայն ուսանողների համաձայնությամբ՝ իրական անունների և հաստատված հղումների հետ։</p>
+      </aside>
+    </div>
+  </div>
+</section>
+</div>
+
+<div class="page-view" id="page-contact" data-page="contact">
+<!-- ============ REGISTER ============ -->
+<section id="register" class="relative py-20 md:py-28">
+  <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at center, rgba(180,248,70,.10), transparent 60%);"></div>
+  <div class="relative max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="text-center mb-10 reveal">
+      <p class="text-xs font-extrabold tracking-[.25em] text-lime-shift mb-4">TAKE YOUR NEXT STEP</p>
+      <h1 class="text-3xl md:text-5xl font-black">ԳՐԱՆՑՈՒՄ ԵՎ ԿԱՊ</h1>
+      <h2 class="mt-3 text-xl md:text-2xl font-black text-lime-shift">ԱՄՐԱԳՐԻՐ ՔՈ ՏԵՂԸ</h2>
+      <p class="mt-4 text-sm text-white/55">Լրացրու հայտը, և թիմը կկապվի քեզ հետ՝ մանրամասները քննարկելու համար։</p>
+    </div>
+    <div class="grid lg:grid-cols-[.75fr_1.25fr] gap-5 md:gap-7">
+    <aside class="panel p-6 sm:p-8 reveal">
+      <p class="text-xs font-extrabold tracking-[.2em] text-lime-shift mb-3">CONTACT SHIFT</p>
+      <h2 class="text-2xl font-black">Կապ հաստատիր մեզ հետ</h2>
+      <p class="mt-4 text-sm leading-7 text-white/55">Հեռախոսահամարը, էլ․ հասցեն և սոցիալական էջերը կհրապարակվեն այստեղ՝ պաշտոնական տվյալները տրամադրելուց հետո։</p>
+      <div id="contactChannels" class="mt-6 space-y-3"></div>
+      <div class="mt-8 rounded-2xl border border-lime-shift/20 bg-lime-shift/5 p-4">
+        <p class="text-[10px] font-extrabold tracking-[.2em] text-lime-shift">ԴԱՍԸՆԹԱՑԻ ՏԵՂԵՐ</p>
+        <p id="seatsIndicator" class="mt-2 text-sm font-bold">Տեղերի հասանելի քանակը կհաստատվի թիմի հետ</p>
+      </div>
+    </aside>
+    <div class="panel p-5 sm:p-8 md:p-10 reveal">
+      <div class="flex items-center justify-between gap-4 mb-7">
+        <div><p class="text-xs font-bold tracking-widest text-white/45">ՄԻՆՉԵՎ ԳՐԱՆՑՄԱՆ ՓՈՒԼԻ ԱՎԱՐՏԸ</p><p class="text-[10px] text-white/35 mt-1">Իրական վերջնաժամկետը կարգավորեք տվյալների բլոկում</p></div>
+        <div id="countdown" class="flex gap-2 sm:gap-3" aria-live="off"></div>
+      </div>
+      <form id="regForm" class="grid sm:grid-cols-2 gap-4" novalidate>
+        <label class="block"><span class="block text-xs font-bold text-white/60 mb-2">ԱՆՈՒՆ</span><input id="name" name="name" type="text" autocomplete="name" required minlength="2" placeholder="Քո անունը" class="field w-full rounded-xl px-4 py-3.5"></label>
+        <label class="block"><span class="block text-xs font-bold text-white/60 mb-2">ԷԼ․ ՀԱՍՑԵ</span><input id="email" name="email" type="email" autocomplete="email" required placeholder="name@example.com" class="field w-full rounded-xl px-4 py-3.5"></label>
+        <label class="block"><span class="block text-xs font-bold text-white/60 mb-2">ՀԵՌԱԽՈՍ</span><input id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" required placeholder="+374 00 000 000" class="field w-full rounded-xl px-4 py-3.5"></label>
+        <label class="block"><span class="block text-xs font-bold text-white/60 mb-2">ՆԱԽԸՆՏՐԵԼԻ ԽՄԲԻ ԺԱՄ</span><select id="groupTime" name="groupTime" required class="field w-full rounded-xl px-4 py-3.5"><option value="">Ընտրել / նշել նախընտրությունը</option><option value="morning">Առավոտյան</option><option value="afternoon">Կեսօրին</option><option value="evening">Երեկոյան</option><option value="flexible">Ճկուն եմ</option></select></label>
+        <label class="block sm:col-span-2"><span class="block text-xs font-bold text-white/60 mb-2">ՆՇՈՒՄ (ԸՍՏ ՑԱՆԿՈՒԹՅԱՆ)</span><input id="note" name="note" type="text" placeholder="Ի՞նչ կուզես իմանալ դասընթացի մասին" class="field w-full rounded-xl px-4 py-3.5"></label>
+        <div class="sm:col-span-2 flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-2">
+          <p class="text-xs leading-5 text-white/40 max-w-md">Հայտի տվյալները կուղարկվեն միայն կոդում միացված հայտերի հասցեին՝ դասընթացի վերաբերյալ կապ հաստատելու համար։</p>
+          <button id="submitBtn" type="submit" class="btn-lime rounded-full px-8 py-4 text-sm font-black whitespace-nowrap inline-flex items-center justify-center gap-2">ՈՒՂԱՐԿԵԼ ՀԱՅՏ <i data-lucide="arrow-up-right" class="w-4 h-4"></i></button>
+        </div>
+      </form>
+      <p id="formMsg" class="mt-4 text-sm min-h-[1.5rem]" role="status" aria-live="polite"></p>
+    </div>
+    </div>
+  </div>
+</section>
+</div>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer id="footer" class="border-t border-white/10 bg-black/60">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 py-12 grid gap-10 md:grid-cols-3 items-start">
+    <div>
+      <a href="#/home" data-route="home" class="logo-wrap text-white inline-block" aria-label="Shift — գլխավոր">
+        <svg class="h-8 md:h-10 w-auto" viewBox="0 0 1000 300" fill="currentColor" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Shift">
+          <path d="M 50 160 C 50 140 70 130 110 130 L 230 130 L 210 170 L 120 170 C 95 170 85 175 85 185 C 85 195 95 200 120 200 L 190 200 C 240 200 260 220 250 250 C 240 280 200 295 150 295 L 40 295 L 60 255 L 150 255 C 175 255 185 250 185 240 C 185 230 175 225 150 225 L 80 225 C 55 220 50 190 50 160 Z"/>
+          <path d="M 330 130 L 370 130 L 330 295 L 290 295 Z M 350 200 L 440 200 L 430 240 L 340 240 Z M 440 130 L 480 130 L 440 295 L 400 295 Z"/>
+          <path d="M 490 130 L 530 130 L 490 295 L 450 295 Z"/>
+          <path d="M 540 130 L 670 130 L 700 150 L 670 170 L 530 170 Z M 520 190 L 630 190 L 610 230 L 510 230 Z M 500 255 L 590 255 L 580 295 L 490 295 Z"/>
+          <path d="M 700 130 L 820 130 L 810 170 L 770 170 L 740 295 L 700 295 L 730 170 L 690 170 Z"/>
+        </svg>
+      </a>
+      <p class="mt-4 text-sm text-white/55 max-w-xs">Shift Marketing Agency-ի SMM դասընթաց՝ 15 դաս, պրակտիկա և վերջնական քննություն։</p>
+    </div>
+
+    <nav class="flex flex-col gap-3 text-sm font-semibold md:items-center" aria-label="Footer">
+      <a href="#/home" data-route="home" class="foot-link">Դասընթացի ծրագիր</a>
+      <a href="#/about" data-route="about" class="foot-link">Մեր թիմը</a>
+      <a href="#/cases" data-route="cases" class="foot-link">Քեյսեր</a>
+      <a href="#/faq" data-route="faq" class="foot-link">Հարցեր</a>
+      <a href="#/contact" data-route="contact" class="foot-link">Գրանցում և կապ</a>
+    </nav>
+
+    <div id="footerSocial" class="flex md:justify-end flex-wrap gap-2" aria-label="Shift սոցիալական հղումներ"></div>
+  </div>
+  <div class="border-t border-white/10">
+    <p class="max-w-7xl mx-auto px-4 sm:px-6 py-5 text-xs text-white/45">© <span id="currentYear"></span> Shift Marketing Agency. Բոլոր իրավունքները պաշտպանված են։</p>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+  const siteData = {
+    // Fill only with approved, verifiable public information.
+    enrollmentDeadline: '',
+    seatsRemaining: null,
+    formEndpoint: '',
+    contactEmail: '',
+    contactPhone: '',
+    socialLinks: [],
+    stats: { activeClients: null, mediaBudget: null, studentsGraduated: null },
+    caseStudies: [
+      { id: 'food', category: 'food', title: 'Հյուրընկալություն և ռեստորաններ', tag: 'FOOD & HOSPITALITY', icon: 'utensils', summary: 'Բրենդի պատմություն, մենյուի ներկայացում և սոցիալական հարթակների համար կոնտենտի համակարգ։', results: { before: {}, after: {} } },
+      { id: 'real-estate', category: 'real-estate', title: 'Անշարժ գույք', tag: 'REAL ESTATE', icon: 'building-2', summary: 'Գույքի ներկայացման բովանդակություն, լսարանի սեգմենտավորում և հարցումների ուղի։', results: { before: {}, after: {} } },
+      { id: 'ecommerce', category: 'ecommerce', title: 'Էլեկտրոնային առևտուր', tag: 'E-COMMERCE', icon: 'shopping-bag', summary: 'Ապրանքի ներկայացում, առաջարկների հաղորդակցություն և գովազդային funnel-ի կառուցվածք։', results: { before: {}, after: {} } },
+      { id: 'beauty', category: 'beauty', title: 'Գեղեցկության ոլորտ', tag: 'BEAUTY', icon: 'sparkles', summary: 'Վիզուալ պատմություններ, ծառայությունների ներկայացում և բովանդակության պլան։', results: { before: {}, after: {} } }
+    ],
+    testimonials: [],
+    faq: [
+      { question: 'Որքա՞ն է տևում դասընթացը։', answer: 'Ծրագիրը բաղկացած է 15 դասից և վերջնական քննությունից։ Օրացուցային տևողությունն ու դասերի հաճախականությունը կհաստատվեն խմբի մեկնարկից առաջ։' },
+      { question: 'Ի՞նչ ժամերի են անցկացվելու դասերը։', answer: 'Խմբի ժամերը դեռ հաստատված չեն։ Գրանցման հայտում նշեք նախընտրելի ժամային միջակայքը, և թիմը կկապվի ձեզ հետ։' },
+      { question: 'Կա՞ վճարման մաս-մաս տարբերակ։', answer: 'Վճարման պայմանները դեռ հրապարակված չեն։ Թողեք հայտ, որպեսզի թիմը տրամադրի հաստատված արժեքն ու վճարման տարբերակները։' },
+      { question: 'Տրվո՞ւմ է սերտիֆիկատ։', answer: 'Սերտիֆիկատի տրամադրման պայմանները կհաստատվեն դասընթացի կազմակերպիչների կողմից և կհաղորդվեն գրանցումից առաջ։' },
+      { question: 'Պե՞տք է նախնական փորձ ունենալ։', answer: 'Դասընթացի ծրագիրը ներառում է SMM-ի և մարքեթինգի հիմունքները։ Նախնական պահանջների վերաբերյալ վերջնական մանրամասները կարող եք ճշտել հայտով։' }
+    ]
+  };
+
+  const routeNames = ['home', 'about', 'cases', 'faq', 'contact'];
+  const routeTitles = {
+    home: 'Shift Academy — SMM դասընթաց',
+    about: 'Մեր մասին և թիմը — Shift',
+    cases: 'Քեյսեր և պորտֆոլիո — Shift',
+    faq: 'Հարցեր և կարծիքներ — Shift',
+    contact: 'Գրանցում և կապ — Shift'
+  };
+
+  const lessons = [
+    { title: "ՆԵՐԱԾՈՒԹՅՈՒՆ SMM-ԻՆ ԵՎ ՄԱՐՔԵԹԻՆԳԻ ՀԻՄՈՒՆՔՆԵՐ", detail: "Ծանոթացում SMM մասնագետի դերին, մարքեթինգի հիմքերին և ոլորտի հիմնական ուղղություններին։" },
+    { title: "ՔՈՆԹԵՆԹ-ՌԱԶՄԱՎԱՐՈՒԹՅՈՒՆ ԵՎ ՀԱՇՎԵՏՎՈՒԹՅՈՒՆ", detail: "Ինչպես կապել բովանդակությունը նպատակների հետ և հետևել աշխատանքի արդյունքներին։" },
+    { title: "ԲՐԻՖ, SMART ՆՊԱՏԱԿՆԵՐ ԵՎ ՔՈՆԹԵՆԹ ՊԼԱՆ", detail: "Հաճախորդի պահանջների հստակեցում, չափելի նպատակների սահմանում և պլանի կազմում։" },
+    { title: "CANVA-Ն ՈՐՊԵՍ SMM ԳՈՐԾԻՔ", detail: "Canva միջավայրում սոցիալական ցանցերի համար վիզուալ նյութերի պատրաստում։" },
+    { title: "INSTAGRAM-Ը ԲԻԶՆԵՍԻ ՀԱՄԱՐ", detail: "Բիզնես էջի կառուցվածք, պրոֆիլի ներկայացում և Instagram-ի կիրառումը բիզնեսում։" },
+    { title: "ԱԼԳՈՐԻԹՄՆԵՐ ԵՎ INFLUENCER MARKETING", detail: "Հարթակների ալգորիթմների փոփոխություններ և ինֆլուենսերների հետ աշխատանքի մոտեցումներ։" },
+    { title: "INSTAGRAM ՎԻԶՈՒԱԼ․ ՄԱՍ 1", detail: "Վիզուալ ոճի և էջի ընդհանուր տեսքի կարևորությունը։" },
+    { title: "INSTAGRAM ՎԻԶՈՒԱԼ․ ՄԱՍ 2", detail: "Վիզուալ հաղորդակցության շարունակություն՝ կայուն և ճանաչելի էջի համար։" },
+    { title: "ՀԱՇԹԵԳՆԵՐ ԵՎ STORYTELLING", detail: "Հաշթեգների կիրառություն և պատմողական ձևաչափեր Instagram-ում։" },
+    { title: "ՊՐԱԿՏԻԿԱ ԵՎ ՎԱՃԱՌՈՂ ՏԵՔՍՏԵՐ", detail: "Գործնական աշխատանք և վաճառքին աջակցող հաղորդագրությունների կազմում։" },
+    { title: "ԹԻՐԱԽԱՅԻՆ ԼՍԱՐԱՆ", detail: "Հաճախորդի լսարանի սահմանում և գովազդային թիրախավորման հիմունքներ։" },
+    { title: "FACEBOOK BUSINESS ԷՋ", detail: "Facebook բիզնես էջի ստեղծում և կառավարման հիմնական հնարավորությունները։" },
+    { title: "META BUSINESS SUITE", detail: "Meta-ի գործիքների միջավայրի և էջերի կառավարման հետ աշխատանք։" },
+    { title: "ADS MANAGER՝ ԳՈՎԱԶԴ 0-ԻՑ", detail: "Ads Manager-ի կառուցվածք և գովազդային արշավի ստեղծման քայլերը։" },
+    { title: "CV ԵՎ PORTFOLIO", detail: "Աշխատանքների ներկայացում և SMM մասնագետի CV/պորտֆոլիոյի ձևավորում։" }
+  ];
+
+  const grid = document.getElementById('lessons');
+  lessons.forEach((lesson, i) => {
+    const n = i + 1;
+    const card = document.createElement('article');
+    card.className = 'lesson tilt-card p-5 md:p-6 min-h-[190px]' + (n === 15 ? ' final' : '');
+    card.setAttribute('aria-expanded', 'false');
+    const trigger = document.createElement('button');
+    const detailId = `lesson-detail-${n}`;
+    trigger.className = 'lesson-trigger flex flex-col items-start gap-4 min-h-[145px]';
+    trigger.type = 'button';
+    trigger.setAttribute('aria-expanded', 'false');
+    trigger.setAttribute('aria-controls', detailId);
+    const number = document.createElement('span');
+    number.className = 'num text-4xl md:text-5xl';
+    number.textContent = `${String(n).padStart(2, '0')}`;
+    const title = document.createElement('span');
+    title.className = 'text-[13px] md:text-sm font-extrabold leading-relaxed text-white/90';
+    title.textContent = lesson.title;
+    const hint = document.createElement('span');
+    hint.className = 'text-[10px] uppercase tracking-[.16em] text-white/35';
+    hint.textContent = 'ԲԱՑԵԼ ԹԵՄԱՆ';
+    trigger.append(number, title, hint);
+    const detail = document.createElement('p');
+    detail.className = 'lesson-detail hidden mt-4 border-t border-white/10 pt-4';
+    detail.id = detailId;
+    detail.textContent = lesson.detail;
+    trigger.addEventListener('click', () => {
+      const open = trigger.getAttribute('aria-expanded') !== 'true';
+      trigger.setAttribute('aria-expanded', String(open));
+      card.setAttribute('aria-expanded', String(open));
+      detail.classList.toggle('hidden', !open);
+      hint.textContent = open ? 'ՓԱԿԵԼ ԹԵՄԱՆ' : 'ԲԱՑԵԼ ԹԵՄԱՆ';
+    });
+    card.append(trigger, detail);
+    grid.appendChild(card);
+  });
+
+  const examCard = document.createElement('article');
+  examCard.className = 'lesson exam tilt-card p-5 md:p-6 min-h-[190px] flex flex-col justify-between';
+  examCard.innerHTML = '<span class="num text-4xl md:text-5xl">★</span><div><p class="text-[10px] uppercase tracking-[.2em] text-amber-200/80 font-extrabold mb-2">FINAL STEP</p><p class="text-sm font-black">ՎԵՐՋՆԱԿԱՆ ՔՆՆՈՒԹՅՈՒՆ</p><p class="lesson-detail mt-3">Դասընթացի ընթացքում ստացած գիտելիքների ամփոփում և կիրառություն։</p></div>';
+  grid.appendChild(examCard);
+
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const closeMobileMenu = () => {
+    mobileMenu.classList.remove('open');
+    mobileMenu.setAttribute('aria-hidden', 'true');
+    mobileMenu.inert = true;
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-label', 'Բացել մենյուն');
+  };
+  menuBtn.addEventListener('click', () => {
+    const open = !mobileMenu.classList.contains('open');
+    if (open) {
+      mobileMenu.inert = false;
+      mobileMenu.setAttribute('aria-hidden', 'false');
+      window.requestAnimationFrame(() => mobileMenu.classList.add('open'));
+    } else {
+      closeMobileMenu();
+    }
+    menuBtn.setAttribute('aria-expanded', String(open));
+    menuBtn.setAttribute('aria-label', open ? 'Փակել մենյուն' : 'Բացել մենյուն');
+  });
+
+  const closeMenuOnEscape = (event) => {
+    if (event.key === 'Escape' && mobileMenu.classList.contains('open')) {
+      closeMobileMenu();
+      menuBtn.focus();
+    }
+  };
+  document.addEventListener('keydown', closeMenuOnEscape);
+
+  const headline = 'Դարձիր Շուկայի Ամենապահանջված SMM Մասնագետը';
+  const typedHeadline = document.getElementById('typedHeadline');
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    typedHeadline.textContent = headline;
+  } else {
+    let characterIndex = 0;
+    const typeNextCharacter = () => {
+      typedHeadline.textContent = Array.from(headline).slice(0, characterIndex).join('');
+      characterIndex += 1;
+      if (characterIndex <= Array.from(headline).length) window.setTimeout(typeNextCharacter, 38);
+    };
+    typeNextCharacter();
+  }
+
+  const supportsFinePointer = window.matchMedia('(pointer: fine)').matches;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const attachTilt = (card) => {
+    if (!supportsFinePointer || reducedMotion || card.dataset.tiltReady) return;
+    card.dataset.tiltReady = 'true';
+    card.addEventListener('pointermove', (event) => {
+      const rect = card.getBoundingClientRect();
+      const x = (event.clientX - rect.left) / rect.width;
+      const y = (event.clientY - rect.top) / rect.height;
+      card.style.transform = `perspective(900px) rotateX(${(0.5 - y) * 7}deg) rotateY(${(x - 0.5) * 7}deg) translateY(-3px)`;
+    });
+    card.addEventListener('pointerleave', () => {
+      card.style.transform = '';
+    });
+  };
+  if (supportsFinePointer && !reducedMotion) {
+    let pointerFrame = 0;
+    document.addEventListener('pointermove', (event) => {
+      if (pointerFrame) cancelAnimationFrame(pointerFrame);
+      pointerFrame = requestAnimationFrame(() => {
+        document.body.style.setProperty('--pointer-x', `${event.clientX}px`);
+        document.body.style.setProperty('--pointer-y', `${event.clientY}px`);
+        pointerFrame = 0;
+      });
+    }, { passive: true });
+  }
+  document.querySelectorAll('.tilt-card').forEach(attachTilt);
+
+  const revealObserver = 'IntersectionObserver' in window
+    ? new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 })
+    : null;
+  document.querySelectorAll('.reveal').forEach((element) => {
+    if (revealObserver) revealObserver.observe(element);
+    else element.classList.add('is-visible');
+  });
+
+  const renderCaseStudies = (filter = 'all') => {
+    const caseGrid = document.getElementById('caseGrid');
+    caseGrid.replaceChildren();
+    const entries = siteData.caseStudies.filter((entry) => filter === 'all' || entry.category === filter);
+    entries.forEach((entry) => {
+      const card = document.createElement('article');
+      card.className = 'panel tilt-card overflow-hidden reveal';
+      const visual = document.createElement('div');
+      visual.className = 'case-visual relative min-h-52 p-6 sm:p-8 flex flex-col justify-between';
+      const index = document.createElement('span');
+      index.className = 'text-xs font-black tracking-[.25em] text-lime-shift';
+      index.textContent = entry.tag;
+      const iconWrap = document.createElement('div');
+      iconWrap.className = 'absolute inset-0 grid place-items-center text-lime-shift/25';
+      const icon = document.createElement('i');
+      icon.dataset.lucide = entry.icon;
+      icon.className = 'w-20 h-20';
+      iconWrap.appendChild(icon);
+      const status = document.createElement('span');
+      status.className = 'relative z-10 self-start rounded-full border border-white/15 bg-black/40 px-3 py-1 text-[9px] font-extrabold tracking-[.14em] text-white/55';
+      status.textContent = 'CASE STUDY · ԼՐԱՑՎՈՂ ՕՐԻՆԱԿ';
+      visual.append(index, iconWrap, status);
+      const content = document.createElement('div');
+      content.className = 'p-6 sm:p-8';
+      const title = document.createElement('h2');
+      title.className = 'text-xl sm:text-2xl font-black';
+      title.textContent = entry.title;
+      const summary = document.createElement('p');
+      summary.className = 'mt-3 text-sm leading-6 text-white/55';
+      summary.textContent = entry.summary;
+      const metrics = document.createElement('div');
+      metrics.className = 'mt-6 grid grid-cols-2 gap-3';
+      [['before', 'ՄԻՆՉ'], ['after', 'ՀԵՏՈ']].forEach(([stage, caption]) => {
+        const metric = document.createElement('div');
+        metric.className = 'metric-placeholder rounded-xl p-4';
+        const metricCaption = document.createElement('p');
+        metricCaption.className = 'text-[9px] font-extrabold tracking-[.16em] text-white/40';
+        metricCaption.textContent = caption;
+        metric.appendChild(metricCaption);
+        [['Reach', 'reach'], ['ROAS', 'roas'], ['Engagement', 'engagement']].forEach(([metricName, key]) => {
+          const row = document.createElement('p');
+          row.className = 'mt-2 flex justify-between gap-2 text-[10px] text-white/45';
+          const metricLabel = document.createElement('span');
+          metricLabel.textContent = metricName;
+          const value = document.createElement('strong');
+          value.className = 'text-white/80';
+          value.textContent = entry.results?.[stage]?.[key] ?? '—';
+          row.append(metricLabel, value);
+          metric.appendChild(row);
+        });
+        metrics.appendChild(metric);
+      });
+      const disclaimer = document.createElement('p');
+      disclaimer.className = 'mt-4 text-[10px] leading-5 text-white/35';
+      disclaimer.textContent = 'Հաճախորդի անունը, արշավի նյութերն ու Reach / ROAS / Engagement չափումները կավելացվեն թույլտվությունից և տվյալների ստուգումից հետո։';
+      content.append(title, summary, metrics, disclaimer);
+      card.append(visual, content);
+      caseGrid.appendChild(card);
+      attachTilt(card);
+      if (revealObserver) revealObserver.observe(card);
+      else card.classList.add('is-visible');
+    });
+    if (window.lucide) window.lucide.createIcons();
+  };
+  renderCaseStudies();
+
+  document.querySelectorAll('[data-filter]').forEach((button) => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('[data-filter]').forEach((item) => item.classList.toggle('active', item === button));
+      renderCaseStudies(button.dataset.filter);
+    });
+  });
+
+  const faqList = document.getElementById('faqList');
+  siteData.faq.forEach((entry, index) => {
+    const item = document.createElement('div');
+    item.className = 'faq-item py-4';
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.className = 'w-full flex items-center justify-between gap-4 text-left font-bold text-sm sm:text-base';
+    button.setAttribute('aria-expanded', 'false');
+    button.setAttribute('aria-controls', `faq-answer-${index}`);
+    const question = document.createElement('span');
+    question.textContent = entry.question;
+    const icon = document.createElement('i');
+    icon.dataset.lucide = 'plus';
+    icon.className = 'w-4 h-4 shrink-0 text-lime-shift';
+    button.append(question, icon);
+    const answer = document.createElement('p');
+    answer.id = `faq-answer-${index}`;
+    answer.className = 'faq-answer mt-3 pr-7 text-sm leading-7 text-white/55';
+    answer.hidden = true;
+    answer.textContent = entry.answer;
+    button.addEventListener('click', () => {
+    const expanded = button.getAttribute('aria-expanded') !== 'true';
+    button.setAttribute('aria-expanded', String(expanded));
+    answer.hidden = !expanded;
+    });
+    item.append(button, answer);
+    faqList.appendChild(item);
+  });
+
+  const testimonials = document.getElementById('testimonials');
+  if (siteData.testimonials.length) {
+    let testimonialIndex = 0;
+    const renderTestimonial = () => {
+      const entry = siteData.testimonials[testimonialIndex];
+      testimonials.replaceChildren();
+      const stars = document.createElement('p');
+      stars.className = 'review-stars text-sm';
+      stars.textContent = '★'.repeat(Math.max(0, Math.min(5, Math.floor(Number(entry.rating) || 0))));
+      const quote = document.createElement('blockquote');
+      quote.className = 'mt-4 text-base leading-7 text-white/75';
+      quote.textContent = `“${entry.quote}”`;
+      const author = document.createElement('p');
+      author.className = 'mt-4 text-xs font-bold text-lime-shift';
+      author.textContent = entry.name;
+      const portfolioLink = document.createElement('a');
+      if (typeof entry.portfolioLink === 'string' && entry.portfolioLink.startsWith('https://')) {
+        portfolioLink.href = entry.portfolioLink;
+        portfolioLink.target = '_blank';
+        portfolioLink.rel = 'noopener noreferrer';
+        portfolioLink.className = 'mt-2 inline-block text-xs text-white/55 underline underline-offset-4 hover:text-lime-shift';
+        portfolioLink.textContent = 'ԴԻՏԵԼ ՊՈՐՏՖՈԼԻՈՆ';
+      }
+      const controls = document.createElement('div');
+      controls.className = 'mt-6 flex gap-2';
+      ['chevron-left', 'chevron-right'].forEach((direction, controlIndex) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'social w-10 h-10 rounded-full grid place-items-center';
+        button.setAttribute('aria-label', controlIndex ? 'Հաջորդ կարծիքը' : 'Նախորդ կարծիքը');
+        const icon = document.createElement('i');
+        icon.dataset.lucide = direction;
+        icon.className = 'w-4 h-4';
+        button.appendChild(icon);
+        button.addEventListener('click', () => {
+          testimonialIndex = (testimonialIndex + (controlIndex ? 1 : siteData.testimonials.length - 1)) % siteData.testimonials.length;
+          renderTestimonial();
+        });
+        controls.appendChild(button);
+      });
+      testimonials.append(stars, quote, author);
+      if (portfolioLink.href) testimonials.appendChild(portfolioLink);
+      testimonials.appendChild(controls);
+      if (window.lucide) window.lucide.createIcons();
+    };
+    renderTestimonial();
+  } else {
+    const empty = document.createElement('div');
+    empty.className = 'metric-placeholder rounded-2xl p-5';
+    empty.innerHTML = '<p class="text-xs font-extrabold tracking-[.16em] text-lime-shift">ՀԱՍՏԱՏՎԱԾ ԿԱՐԾԻՔՆԵՐ ԴԵՌ ՉԿԱՆ</p><p class="mt-3 text-sm leading-6 text-white/55">Ուսանողների իրական կարծիքները կհրապարակվեն միայն նրանց համաձայնությամբ։</p><p class="mt-3 text-[10px] font-bold tracking-wider text-white/35">ԿԱՐԾԻՔՆԵՐԸ ԿԱՎԵԼԱՑՎԵՆ ՀԱՍՏԱՏՈՒՄԻՑ ՀԵՏՈ</p>';
+    testimonials.appendChild(empty);
+  }
+
+  const contactChannels = document.getElementById('contactChannels');
+  const contactEntries = [
+    siteData.contactEmail ? { label: 'EMAIL', value: siteData.contactEmail, href: `mailto:${siteData.contactEmail}`, icon: 'mail' } : null,
+    siteData.contactPhone ? { label: 'PHONE', value: siteData.contactPhone, href: `tel:${siteData.contactPhone.replace(/[^\d+]/g, '')}`, icon: 'phone' } : null,
+    ...siteData.socialLinks.filter((item) => typeof item.url === 'string' && item.url.startsWith('https://')).map((item) => ({ label: item.name, value: item.name, href: item.url, icon: item.icon || 'external-link' }))
+  ].filter(Boolean);
+  if (contactEntries.length) {
+    contactEntries.forEach((entry) => {
+      const link = document.createElement('a');
+      link.href = entry.href;
+      link.className = 'social flex items-center gap-3 rounded-xl p-3 text-sm';
+      if (entry.href.startsWith('https://')) {
+        link.target = '_blank';
+        link.rel = 'noopener noreferrer';
+      }
+      const icon = document.createElement('i');
+      icon.dataset.lucide = entry.icon;
+      icon.className = 'w-4 h-4 text-lime-shift';
+      const label = document.createElement('span');
+      const labelName = document.createElement('span');
+      labelName.className = 'block text-[9px] tracking-widest text-white/35';
+      labelName.textContent = entry.label;
+      const labelValue = document.createElement('span');
+      labelValue.textContent = entry.value;
+      label.append(labelName, labelValue);
+      link.append(icon, label);
+      contactChannels.appendChild(link);
+    });
+  } else {
+    const pending = document.createElement('p');
+    pending.className = 'rounded-xl border border-white/10 p-4 text-xs leading-6 text-white/40';
+    pending.textContent = 'Պաշտոնական կապի տվյալները դեռ կարգավորված չեն։ Օգտագործեք հայտի ձևը՝ թիմին կապվելու համար։';
+    contactChannels.appendChild(pending);
+  }
+  const footerSocial = document.getElementById('footerSocial');
+  siteData.socialLinks.filter((item) => typeof item.url === 'string' && item.url.startsWith('https://')).forEach((item) => {
+    const link = document.createElement('a');
+    link.href = item.url;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    link.className = 'social w-11 h-11 rounded-full grid place-items-center';
+    link.setAttribute('aria-label', item.name);
+    const icon = document.createElement('i');
+    icon.dataset.lucide = item.icon || 'external-link';
+    icon.className = 'w-5 h-5';
+    link.appendChild(icon);
+    footerSocial.appendChild(link);
+  });
+  if (window.lucide) window.lucide.createIcons();
+
+  Object.entries(siteData.stats).forEach(([key, value]) => {
+    const node = document.querySelector(`[data-stat="${key}"]`);
+    if (typeof value === 'number' && Number.isFinite(value) && value >= 0) {
+      if ('IntersectionObserver' in window && !reducedMotion) {
+        const counterObserver = new IntersectionObserver((entries, observer) => {
+          if (!entries[0].isIntersecting) return;
+          const start = performance.now();
+          const duration = 1100;
+          const animate = (now) => {
+            const progress = Math.min((now - start) / duration, 1);
+            node.textContent = Math.round(value * (1 - Math.pow(1 - progress, 3))).toLocaleString();
+            if (progress < 1) requestAnimationFrame(animate);
+            else observer.disconnect();
+          };
+          requestAnimationFrame(animate);
+        }, { threshold: 0.5 });
+        counterObserver.observe(node);
+      } else {
+        node.textContent = value.toLocaleString();
+      }
+    } else if (value !== null && value !== undefined && value !== '') {
+      node.textContent = String(value);
+    }
+  });
+  document.getElementById('seatsIndicator').textContent = Number.isInteger(siteData.seatsRemaining) && siteData.seatsRemaining >= 0
+    ? `Մնացել է ${siteData.seatsRemaining} տեղ`
+    : 'Տեղերի հասանելի քանակը կհաստատվի թիմի հետ';
+
+  const pageViews = [...document.querySelectorAll('[data-page]')];
+  const setPage = (page, options = {}) => {
+    const nextPage = routeNames.includes(page) ? page : 'home';
+    pageViews.forEach((view) => view.classList.toggle('active', view.dataset.page === nextPage));
+    document.querySelectorAll('[data-route]').forEach((link) => {
+      if (link.dataset.route === nextPage) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+    document.querySelectorAll('[data-indicator]').forEach((indicator) => {
+      if (indicator.dataset.indicator === nextPage) indicator.setAttribute('aria-current', 'page');
+      else indicator.removeAttribute('aria-current');
+    });
+    document.title = routeTitles[nextPage];
+    closeMobileMenu();
+    if (options.updateHash && location.hash !== `#/${nextPage}`) history.pushState({ page: nextPage }, '', `#/${nextPage}`);
+    window.requestAnimationFrame(() => {
+      const anchorTarget = options.anchor ? document.getElementById(options.anchor) : null;
+      if (anchorTarget && anchorTarget.closest('[data-page]')?.dataset.page === nextPage) {
+        anchorTarget.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+      } else {
+        window.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' });
+      }
+      if (revealObserver) document.querySelectorAll(`#page-${nextPage} .reveal:not(.is-visible)`).forEach((element) => revealObserver.observe(element));
+    });
+  };
+  const resolveLocation = () => {
+    const hash = location.hash.slice(1);
+    if (hash.startsWith('/')) {
+      setPage(hash.slice(1).split('/')[0]);
+      return;
+    }
+    const targetId = decodeURIComponent(hash);
+    const target = targetId ? document.getElementById(targetId) : null;
+    const page = target?.closest('[data-page]')?.dataset.page || 'home';
+    setPage(page, { anchor: targetId || null });
+  };
+  document.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    const indicator = event.target.closest('[data-indicator]');
+    if (indicator) {
+      event.preventDefault();
+      setPage(indicator.dataset.indicator, { updateHash: true });
+      return;
+    }
+    if (!link) return;
+    const route = link.dataset.route;
+    const targetId = link.getAttribute('href').slice(1);
+    if (route) {
+      event.preventDefault();
+      setPage(route, { updateHash: true });
+    } else if (targetId.startsWith('/')) {
+      event.preventDefault();
+      setPage(targetId.slice(1).split('/')[0], { updateHash: true });
+    } else {
+      const target = document.getElementById(decodeURIComponent(targetId));
+      const owner = target?.closest('[data-page]')?.dataset.page;
+      if (target && owner) {
+        event.preventDefault();
+        setPage(owner, { updateHash: true, anchor: targetId });
+      }
+    }
+  });
+  window.addEventListener('popstate', resolveLocation);
+  window.addEventListener('hashchange', resolveLocation);
+  resolveLocation();
+
+  // Configure an ISO 8601 deadline when the real course schedule is confirmed.
+  const ENROLLMENT_DEADLINE = siteData.enrollmentDeadline;
+  const countdown = document.getElementById('countdown');
+  const countdownUnits = [['days', 'ՕՐ'], ['hours', 'ԺԱՄ'], ['minutes', 'ՐՈՊԵ'], ['seconds', 'ՎԱՅՐԿ']];
+  const updateCountdown = () => {
+    const deadline = ENROLLMENT_DEADLINE ? new Date(ENROLLMENT_DEADLINE).getTime() : NaN;
+    if (!Number.isFinite(deadline) || deadline <= Date.now()) {
+      countdown.textContent = 'ՄԵԿՆԱՐԿԻ ՕՐԸ ԿՀՐԱՊԱՐԱԿՎԻ';
+      countdown.className = 'text-xs sm:text-sm text-lime-shift font-extrabold text-right';
+      return false;
+    }
+    let remaining = Math.floor((deadline - Date.now()) / 1000);
+    countdown.replaceChildren();
+    countdownUnits.forEach(([unit, label]) => {
+      let value;
+      if (unit === 'days') value = Math.floor(remaining / 86400);
+      else if (unit === 'hours') value = Math.floor((remaining % 86400) / 3600);
+      else if (unit === 'minutes') value = Math.floor((remaining % 3600) / 60);
+      else value = remaining % 60;
+      const box = document.createElement('div');
+      box.className = 'timer-box rounded-xl px-2.5 sm:px-3 py-2 text-center min-w-[48px]';
+      const valueNode = document.createElement('span');
+      valueNode.className = 'block text-lg sm:text-xl font-black text-lime-shift tabular-nums';
+      valueNode.textContent = String(value).padStart(2, '0');
+      const labelNode = document.createElement('span');
+      labelNode.className = 'block text-[8px] font-bold tracking-widest text-white/40';
+      labelNode.textContent = label;
+      box.append(valueNode, labelNode);
+      countdown.appendChild(box);
+    });
+    return true;
+  };
+  if (updateCountdown()) window.setInterval(updateCountdown, 1000);
+
+  document.getElementById('currentYear').textContent = String(new Date().getFullYear());
+
+  // Configure a backend URL to receive registration submissions.
+  const FORM_ENDPOINT = siteData.formEndpoint;
+  const form = document.getElementById('regForm');
+  const msg = document.getElementById('formMsg');
+  const submitButton = document.getElementById('submitBtn');
+  form.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    msg.className = 'mt-4 text-sm min-h-[1.5rem]';
+    msg.textContent = '';
+    if (!form.reportValidity()) return;
+
+    const phone = document.getElementById('phone').value.trim();
+    const digits = phone.replace(/\D/g, '');
+    if (digits.length < 8 || digits.length > 15) {
+      document.getElementById('phone').setCustomValidity('Մուտքագրեք 8-15 թվանշան պարունակող հեռախոսահամար։');
+      document.getElementById('phone').reportValidity();
+      document.getElementById('phone').addEventListener('input', (event) => event.currentTarget.setCustomValidity(''), { once: true });
+      return;
+    }
+
+    if (!FORM_ENDPOINT) {
+      msg.classList.add('text-amber-200');
+      msg.textContent = 'Ձևը ստուգված է, բայց հայտերի ուղարկման հասցեն դեռ միացված չէ։ Կարգավորեք FORM_ENDPOINT-ը կոդում։';
+      return;
+    }
+
+    submitButton.disabled = true;
+    submitButton.textContent = 'ՈՒՂԱՐԿՎՈՒՄ Է…';
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify(Object.fromEntries(new FormData(form)))
+      });
+      if (!response.ok) throw new Error(`Request failed with status ${response.status}`);
+      form.reset();
+      msg.classList.add('text-lime-shift');
+      msg.textContent = 'Շնորհակալություն։ Հայտը հաջողությամբ ուղարկվեց։';
+    } catch (error) {
+      console.error('Registration submission failed:', error);
+      msg.classList.add('text-red-300');
+      msg.textContent = 'Հայտը չհաջողվեց ուղարկել։ Խնդրում ենք կրկին փորձել ավելի ուշ։';
+    } finally {
+      submitButton.disabled = false;
+      submitButton.textContent = 'ՈՒՂԱՐԿԵԼ ՀԱՅՏ';
+    }
+  });
+
+  if (window.lucide) window.lucide.createIcons();
+</script>
+</body>
+</html>
