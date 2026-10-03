@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --shift-lime: #b4f846;
+    --shift-lime-glow: rgba(180, 248, 70, 0.4);
+    --shift-bg: #07080a;
+    --shift-surface: #101216;
+    --shift-surface-2: #161920;
+    --shift-border: rgba(255, 255, 255, 0.08);
+  }
+
+  body {
+    background-color: #07080a;
+    color: #f3f5f8;
+    font-family: 'Montserrat', 'Noto Sans Armenian', sans-serif;
+  }
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(16, 18, 22, 0.72);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.glass-panel-hover:hover {
+  border-color: rgba(180, 248, 70, 0.35);
+  box-shadow: 0 10px 30px -10px rgba(180, 248, 70, 0.15);
+  transform: translateY(-2px);
+}
+
+.glass-nav {
+  background: rgba(8, 9, 12, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+}
+
+/* Neon glow buttons */
+.btn-neon {
+  background-color: #b4f846;
+  color: #050505;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  transition: all 0.25s ease;
+  box-shadow: 0 0 20px -3px rgba(180, 248, 70, 0.4);
+}
+.btn-neon:hover {
+  background-color: #c4fa62;
+  box-shadow: 0 0 28px 2px rgba(180, 248, 70, 0.65);
+  transform: translateY(-1px);
+}
+.btn-neon:active {
+  transform: translateY(0);
+}
+
+.btn-ghost {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.03);
+  color: #ffffff;
+  transition: all 0.25s ease;
+}
+.btn-ghost:hover {
+  border-color: rgba(180, 248, 70, 0.5);
+  background: rgba(180, 248, 70, 0.08);
+  color: #b4f846;
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #08090c;
+}
+::-webkit-scrollbar-thumb {
+  background: #20242e;
+  border-radius: 9999px;
+  border: 2px solid #08090c;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #b4f846;
+}
+
+/* Marquee / ticker animation */
+@keyframes ticker {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: ticker 25s linear infinite;
+}
+.animate-marquee:hover {
+  animation-play-state: paused;
+}

@@ -5,8 +5,8 @@
   const CONFIG = {
     enrollmentDeadline: "",
     seatsRemaining: 4,
-    formEndpoint: "",
-    contactEmail: "",
+    formEndpoint: "/api/register",
+    contactEmail: "mkheyanagency@gmail.com",
     contactPhone: "",
     mapEmbedUrl: "",
     stats: {
@@ -290,7 +290,7 @@
   }
 
   const contactRoots = document.querySelectorAll("[data-contact-links]");
-  if (contactRoot) {
+  if (contactRoots.length) {
     const contacts = [
       CONFIG.contactEmail ? { label: "EMAIL", value: CONFIG.contactEmail, href: `mailto:${CONFIG.contactEmail}`, icon: "mail" } : null,
       CONFIG.contactPhone ? { label: "PHONE", value: CONFIG.contactPhone, href: `tel:${CONFIG.contactPhone.replace(/[^\d+]/g, "")}`, icon: "phone" } : null,

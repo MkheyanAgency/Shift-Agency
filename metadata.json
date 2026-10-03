@@ -1,0 +1,6 @@
+{
+  "name": "Shift Marketing Agency & Academy",
+  "description": "Shift Marketing Agency & Academy. SMM դասընթաց՝ ռազմավարություն, կոնտենտ և Meta Ads։",
+  "permissions": [],
+  "capabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
