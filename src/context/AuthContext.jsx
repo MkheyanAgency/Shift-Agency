@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
 const AuthContext = createContext();
 
@@ -12,29 +12,41 @@ export const AuthProvider = ({ children }) => {
     }
   });
 
-  const login = (email, password) => {
-    // Standard secure admin credential check (supports Shift official credentials or demo)
-    if (
-      (email === 'admin@shiftagency.am' && password === 'shift2026') ||
-      (email === 'mkheyanagency@gmail.com' && password === 'shift2026') ||
-      (email === 'demo' && password === 'demo')
-    ) {
-      const userData = {
-        email,
-        name: 'Shift Admin',
-        role: 'Super Administrator',
-        loggedInAt: new Date().toISOString()
+  const login = async (email, password) => {
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, password })
+      });
+
+      const data = await res.json();
+
+      if (res.ok && data.success) {
+        setUser(data.user);
+        localStorage.setItem('shift_admin_auth', JSON.stringify(data.user));
+        if (data.token) {
+          sessionStorage.setItem('shift_admin_token', data.token);
+        }
+        return { success: true };
+      }
+
+      return {
+        success: false,
+        error: data.error || 'Սխալ էլ․ հասցե կամ գաղտնաբառ։'
       };
-      setUser(userData);
-      localStorage.setItem('shift_admin_auth', JSON.stringify(userData));
-      return { success: true };
+    } catch (err) {
+      return {
+        success: false,
+        error: 'Սերվերն անհասանելի է։ Ստուգեք կապը կամ փորձեք ավելի ուշ։'
+      };
     }
-    return { success: false, error: 'Սխալ էլ․ հասցե կամ գաղտնաբառ (Փորձեք՝ admin@shiftagency.am / shift2026)' };
   };
 
   const logout = () => {
     setUser(null);
     localStorage.removeItem('shift_admin_auth');
+    sessionStorage.removeItem('shift_admin_token');
   };
 
   return (
@@ -50,7 +62,7 @@ export const useAuth = () => {
     return {
       user: null,
       isAuthenticated: false,
-      login: () => ({ success: false, error: 'Auth context missing' }),
+      login: async () => ({ success: false, error: 'Auth context missing' }),
       logout: () => {}
     };
   }

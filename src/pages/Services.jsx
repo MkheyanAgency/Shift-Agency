@@ -46,7 +46,7 @@ export default function Services() {
             ? 'Shift Marketing Agency-ի պրոֆեսիոնալ ծառայությունները՝ SMM առաջխաղացում, Meta և Google թիրախային գովազդ, վեբ կայքերի պատրաստում և վիրուսային Reels։'
             : 'Professional marketing services in Armenia: Full-cycle SMM, high-ROAS Meta & Google PPC ads, branding, and conversion-focused web design.'
         }
-        keywords="SMM Yerevan, Meta Ads Armenia, branding Yerevan, website development Armenia, targetologist Yerevan"
+        keywords="SMM Abovyan, Meta Ads Armenia, branding Abovyan, website development Armenia, targetologist Abovyan"
         schema={servicesSchema}
       />
 

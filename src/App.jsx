@@ -6,6 +6,7 @@ import Navbar from './components/common/Navbar';
 import Footer from './components/common/Footer';
 import AIWidget from './components/common/AIWidget';
 import ErrorBoundary from './components/common/ErrorBoundary';
+import ScrollProgressBar from './components/common/ScrollProgressBar';
 import Modal from './components/ui/Modal';
 import { submitLead } from './services/leadsService';
 import { sendTelegramLeadNotification } from './services/telegramBot';
@@ -70,6 +71,7 @@ export default function App() {
   return (
     <ErrorBoundary>
       <div className="min-h-screen bg-[#07080a] text-[#f2f4f7] flex flex-col font-sans selection:bg-[#b4f846] selection:text-black">
+        {!isAdmin && <ScrollProgressBar />}
         {!isAdmin && <Navbar onOpenConsultation={() => setIsConsultModalOpen(true)} />}
 
         <main className="flex-1">
@@ -150,7 +152,7 @@ export default function App() {
                 required
                 value={consultForm.phone}
                 onChange={(e) => setConsultForm({ ...consultForm, phone: e.target.value })}
-                placeholder="+374 98 000 000"
+                placeholder="041 88 24 80"
                 className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs focus:outline-none focus:border-[#b4f846]"
               />
             </div>

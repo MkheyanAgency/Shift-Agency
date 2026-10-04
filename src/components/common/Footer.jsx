@@ -5,7 +5,7 @@ import { Mail, Phone, MapPin, Send, ArrowUpRight, Sparkles } from 'lucide-react'
 import { InstagramIcon, FacebookIcon, LinkedinIcon, TelegramIcon } from './SocialIcons';
 
 export default function Footer() {
-  const { t } = useLanguage();
+  const { t, lang } = useLanguage();
   const currentYear = new Date().getFullYear();
 
   return (
@@ -108,13 +108,35 @@ export default function Footer() {
                 <Mail className="w-4 h-4 text-[#b4f846] shrink-0" />
                 <span>mkheyanagency@gmail.com</span>
               </a>
-              <a href="tel:+37498000000" className="flex items-center gap-2 hover:text-[#b4f846] transition-colors">
+              <a href="tel:+37441882480" className="flex items-center gap-2 hover:text-[#b4f846] transition-colors">
                 <Phone className="w-4 h-4 text-[#b4f846] shrink-0" />
-                <span>+374 (98) 00-00-00</span>
+                <span>041 88 24 80</span>
               </a>
+              <a href="tel:+37443882480" className="flex items-center gap-2 hover:text-[#b4f846] transition-colors">
+                <Phone className="w-4 h-4 text-[#b4f846] shrink-0" />
+                <span>043 88 24 80</span>
+              </a>
+              <div className="flex items-center gap-2 pt-1">
+                <a
+                  href="https://wa.me/37443882480"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="px-2.5 py-1 rounded-lg bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 text-white font-bold text-[11px] transition-colors inline-flex items-center gap-1.5"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#25D366] animate-pulse" />
+                  <span>WhatsApp</span>
+                </a>
+                <a
+                  href="viber://chat?number=%2B37443882480"
+                  className="px-2.5 py-1 rounded-lg bg-[#7360F2]/10 hover:bg-[#7360F2]/20 border border-[#7360F2]/30 text-white font-bold text-[11px] transition-colors inline-flex items-center gap-1.5"
+                >
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#7360F2]" />
+                  <span>Viber</span>
+                </a>
+              </div>
               <div className="flex items-start gap-2 text-neutral-400">
                 <MapPin className="w-4 h-4 text-[#b4f846] shrink-0 mt-0.5" />
-                <span>Երևան, Հայաստան</span>
+                <span>{lang === 'hy' ? 'Աբովյան, Հայաստան' : 'Abovyan, Armenia'}</span>
               </div>
               <div className="pt-2">
                 <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-[#b4f846]/10 text-[#b4f846] border border-[#b4f846]/20">

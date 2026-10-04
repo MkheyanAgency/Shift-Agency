@@ -40,7 +40,7 @@ export default function Courses() {
             ? 'Shift Marketing Academy. Գործնական SMM դասընթաց (15 դաս), Meta Ads Manager պրակտիկա, քննություն և աշխատանքի հնարավորություն գործակալությունում։'
             : 'Master modern SMM with Shift Marketing Academy. 15 intensive practical lessons, live ad campaigns, certification, and agency internship.'
         }
-        keywords="SMM dasntac Yerevan, SMM daser, marketing course Armenia, Meta ads course, SMM sertifikat"
+        keywords="SMM dasntac Abovyan, SMM daser, marketing course Armenia, Meta ads course, SMM sertifikat"
         schema={coursesSchema}
       />
       {/* Hero */}

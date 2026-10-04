@@ -364,7 +364,7 @@ export default function PortfolioDetail() {
                 required
                 value={formPhone}
                 onChange={(e) => setFormPhone(e.target.value)}
-                placeholder="+374 98 000 000"
+                placeholder="041 88 24 80"
                 className="w-full px-3.5 py-2.5 rounded-xl bg-white/[0.04] border border-white/10 text-white text-xs focus:outline-none focus:border-[#b4f846] min-h-[44px]"
               />
             </div>

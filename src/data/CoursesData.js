@@ -2,22 +2,22 @@ export const COURSES_DATA = [
   {
     id: 'smm-course',
     slug: 'smm-course',
-    titleHy: 'Պրակտիկ SMM Դասընթաց (15 Դաս + Քննություն)',
-    titleEn: 'Flagship SMM Course (15 Lessons + Exam)',
+    titleHy: 'Պրակտիկ SMM Դասընթաց (18 Դաս + Քննություն)',
+    titleEn: 'Flagship SMM Course (18 Lessons + Exam)',
     badge: 'MOST POPULAR',
-    tagHy: '15 ԴԱՍ • ՊՐԱԿՏԻԿԱ • ՊՈՐՏՖՈԼԻՈ',
-    tagEn: '15 LESSONS • HANDS-ON • PORTFOLIO',
+    tagHy: '18 ԴԱՍ • ՊՐԱԿՏԻԿԱ • ՊՈՐՏՖՈԼԻՈ',
+    tagEn: '18 LESSONS • HANDS-ON • PORTFOLIO',
     levelHy: 'Սկսնակներից մինչև PRO',
     levelEn: 'Beginner to Advanced',
-    durationHy: '5 շաբաթ (շաբաթական 3 դաս)',
-    durationEn: '5 weeks (3 sessions/week)',
-    formatHy: 'Օֆլայն (Երևան) + Օնլայն հեռարձակում',
-    formatEn: 'Offline in Yerevan + Interactive Livestream',
+    durationHy: '6 շաբաթ (շաբաթական 3 դաս)',
+    durationEn: '6 weeks (3 sessions/week)',
+    formatHy: 'Օֆլայն (Աբովյան) + Օնլայն հեռարձակում',
+    formatEn: 'Offline in Abovyan + Interactive Livestream',
     price: '95,000֏',
     originalPrice: '130,000֏',
     seatsLeft: 4,
-    shortDescHy: 'Դարձի՛ր շուկայի ամենապահանջված SMM մասնագետը։ Սովորիր կոնտենտ-ռազմավարություն, Canva, վիզուալներ, Meta Business Suite, Ads Manager և ստեղծիր քո առաջին հզոր պորտֆոլիոն։',
-    shortDescEn: 'Become a highly sought-after SMM specialist. Master content strategy, Canva visual craft, Meta Business Suite, and Ads Manager with a portfolio-grade graduation exam.',
+    shortDescHy: 'Դարձի՛ր շուկայի ամենապահանջված SMM մասնագետը։ Սովորիր կոնտենտ-ռազմավարություն, Canva, վիզուալներ, Meta Business Suite, Ads Manager, AI գործիքներ և ստեղծիր քո առաջին հզոր պորտֆոլիոն։',
+    shortDescEn: 'Become a highly sought-after SMM specialist. Master content strategy, Canva visual craft, Meta Business Suite, Ads Manager, AI workflows, and client acquisition.',
     heroImage: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1200&q=80',
     targetAudienceHy: [
       'Սկսնակներ, ովքեր ցանկանում են նոր, բարձր վարձատրվող մասնագիտություն ձեռք բերել',
@@ -132,10 +132,31 @@ export const COURSES_DATA = [
       },
       {
         num: '15',
+        titleHy: 'Վիրուսային Reels & TikTok վիդեո-ռազմավարություն',
+        titleEn: 'Viral Short-Form Video Strategy (Reels & TikTok)',
+        descHy: 'Կեռիկներ (Hooks), դինամիկ մոնտաժ, թրենդային աուդիոների կիրառում և վիրուսային տարածում։',
+        descEn: 'Retention mechanics, sound-sync editing, and algorithm distribution signals.'
+      },
+      {
+        num: '16',
+        titleHy: 'AI գործիքներ մարքեթինգում (ChatGPT, Midjourney)',
+        titleEn: 'Generative AI Workflows for Modern SMM',
+        descHy: 'Տեքստերի գեներացիա, կոնտենտ-պլանների ստեղծում և AI վիզուալների պատրաստում։',
+        descEn: 'Prompt engineering, visual generation, and AI-accelerated copy workflows.'
+      },
+      {
+        num: '17',
         titleHy: 'CV / Portfolio գրագետ կազմում և հաճախորդների որոնում',
         titleEn: 'Portfolio Building & Client Acquisition Strategies',
         descHy: 'Ինչպես ներկայացնել քեյսերը, ստանալ առաջին պատվիրատուներին և վարել բանակցություններ։',
         descEn: 'Crafting compelling Behance/PDF portfolios and winning retainers.'
+      },
+      {
+        num: '18',
+        titleHy: 'Բանակցություններ, գնագոյացում և պայմանագրեր',
+        titleEn: 'Client Negotiation, Pricing Strategy & Contracts',
+        descHy: 'Սակագների սահմանում, պայմանագրերի կնքում, դժվար հաճախորդների հետ աշխատանք։',
+        descEn: 'Pricing retainer tiers, SLA definition, contracts, and dispute management.'
       },
       {
         num: '★',
@@ -219,6 +240,49 @@ export const COURSES_DATA = [
       { num: '02', titleHy: 'Վիզուալ ինքնություն և Brandbook', titleEn: 'Visual Identity Architecture', descHy: 'Լոգոյի կառուցում, տպագրական կանոններ և գույներ։', descEn: 'Color palettes, typographic pairing, and layout guidelines.' },
       { num: '03', titleHy: 'Տեսանկարահանում և ստուդիական սարքավորումներ', titleEn: 'Studio Production & Lighting', descHy: 'Տեսախցիկներ, սմարթֆոններ, լուսային սխեմաներ և միկրոֆոններ։', descEn: 'Mobile & mirrorless setups, 3-point lighting, and lavalier audio.' },
       { num: '04', titleHy: 'Վիրուսային մոնտաժ CapCut & Premiere Pro-ում', titleEn: 'Dynamic Editing & SFX', descHy: 'Sound effects, B-roll կադրեր, դինամիկ տեքստեր և գունաբաժանում։', descEn: 'Pacing, SFX layering, kinetic typography, and color grading.' }
+    ]
+  },
+  {
+    id: 'photo-course',
+    slug: 'commercial-mobile-photography',
+    titleHy: 'Կոմերցիոն և Մոբայլ Լուսանկարչություն',
+    titleEn: 'Commercial & Mobile Photography Mastery',
+    badge: 'HANDS-ON',
+    tagHy: '10 ԴԱՍ • ԼՈՒՅՍ • ՖՈՒԴ & ՊՐՈԴՈՒԿՏ',
+    tagEn: '10 LESSONS • LIGHTING • PRODUCT & FOOD',
+    levelHy: 'Սկսնակներից մինչև Պրոֆեսիոնալ',
+    levelEn: 'All skill levels',
+    durationHy: '4 շաբաթ',
+    durationEn: '4 weeks',
+    formatHy: 'Ստուդիա + Լոքեյշն նկարահանումներ',
+    formatEn: 'Studio Workshops + On-Location Shoots',
+    price: '90,000֏',
+    originalPrice: '125,000֏',
+    seatsLeft: 5,
+    shortDescHy: 'Ինչպես սովորական սմարթֆոնով կամ ֆոտոխցիկով ստանալ կոմերցիոն, վաճառող կադրեր։ Ֆուդ-լուսանկարչություն, պրոդուկտի լուսավորություն, ռետուշ Lightroom-ում։',
+    shortDescEn: 'Capture commercial, magazine-grade images using mirrorless cameras or smartphones. Master studio lighting, food styling, and Lightroom grading.',
+    heroImage: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=1200&q=80',
+    targetAudienceHy: [
+      'SMM մասնագետներ և կոնտենտ-մեյքերներ',
+      'Ռեստորանների և խանութների սեփականատերեր',
+      'Սկսնակ լուսանկարիչներ, ովքեր ուզում են մտնել կոմերցիոն դաշտ'
+    ],
+    targetAudienceEn: [
+      'SMM managers and visual content creators',
+      'Restaurant and boutique shop founders',
+      'Emerging photographers targeting commercial brand retainers'
+    ],
+    syllabus: [
+      { num: '01', titleHy: 'Լուսանկարչության հիմունքները (ISO, Shutter, Aperture)', titleEn: 'Camera Manual Foundations (ISO, Shutter, Aperture)', descHy: 'Էքսպոզիցիայի եռանկյունին և սմարթֆոնի Pro ռեժիմի կարգավորումները։', descEn: 'Exposure triangle, sensor physics, and mobile Pro camera calibration.' },
+      { num: '02', titleHy: 'Կոմպոզիցիա և տեսողական ուղղորդում', titleEn: 'Compositional Geometry & Visual Leading', descHy: 'Ոսկե հատում, 3/3 կանոն, առաջնային և երկրորդական պլաններ։', descEn: 'Rule of thirds, leading lines, framing, and depth creation.' },
+      { num: '03', titleHy: 'Բնական լույսի կառավարում', titleEn: 'Natural Light Shaping & Diffusion', descHy: 'Ոսկե ժամ (Golden Hour), արտացոլիչներ (Reflector) և ստվերներ։', descEn: 'Working with diffusers, bounce cards, and hard midday light.' },
+      { num: '04', titleHy: 'Ստուդիական լույսի սխեմաներ (Flash & Continuous)', titleEn: 'Studio Strobe & Continuous Light Schemes', descHy: 'Softbox, Spot, Rim Light և հիմնական 1/2/3 աղբյուրներով սխեմաները։', descEn: 'Key, fill, hair, and background light balancing in studio.' },
+      { num: '05', titleHy: 'Պրոդուկտի լուսանկարչություն (Product Shoot)', titleEn: 'Product Photography & Macro Details', descHy: 'Ապրանքների, շշերի, կոսմետիկայի և փայլուն մակերեսների նկարահանում։', descEn: 'Controlling reflections on glass, cosmetics, and jewelry.' },
+      { num: '06', titleHy: 'Ֆուդ-լուսանկարչություն (Food Photography)', titleEn: 'Gastronomy & Food Styling Dynamics', descHy: 'Ուտեստների սթայլինգ, գոլորշի, տեքստուրա և ռեստորանային ռակուրսներ։', descEn: 'Plating angles, steam simulation, and appetizing color balances.' },
+      { num: '07', titleHy: 'Բիզնես դիմանկար (Corporate Portrait)', titleEn: 'Commercial Headshots & Corporate Profiles', descHy: 'Մոդելի դիրքավորում (Posing), հայացք և հոգեբանական հարմարավետություն։', descEn: 'Executive body language, skin tones, and corporate portraiture.' },
+      { num: '08', titleHy: 'Մոբայլ ֆոտոսեսիա և աքսեսուարներ', titleEn: 'High-End Mobile Gear & Micro-Lenses', descHy: 'iPhone/Samsung ProRAW, կայունացուցիչներ, մակրո ոսպնյակներ և լույսեր։', descEn: 'ProRAW capture workflows, handheld gimbals, and portable LED panels.' },
+      { num: '09', titleHy: 'Գունային մշակում Adobe Lightroom-ում', titleEn: 'Color Grading in Adobe Lightroom', descHy: 'HSL գունային շրջան, կորեր (Curves), Presets և դետալիզացիա։', descEn: 'Curves mastering, selective color grading, masking, and export presets.' },
+      { num: '10', titleHy: 'Առևտրային պորտֆոլիո և պատվերների ընդունում', titleEn: 'Commercial Portfolio & Client Invoicing', descHy: 'Գնացուցակի ձևավորում, հեղինակային իրավունքներ և պայմանագրեր։', descEn: 'Pricing shoot packages, client delivery galleries, and commercial contracts.' }
     ]
   }
 ];

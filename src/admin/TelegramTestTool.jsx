@@ -5,7 +5,7 @@ import { Send, CheckCircle2, AlertCircle, Bot, Sparkles, RefreshCw } from 'lucid
 export default function TelegramTestTool() {
   const [testLead, setTestLead] = useState({
     name: 'Դավիթ Թեստային',
-    phone: '+374 98 765432',
+    phone: '041 88 24 80',
     email: 'test@shiftagency.am',
     service: 'SMM & Target Ads (Թեստ)',
     budget: '500,000֏ / ամիս',

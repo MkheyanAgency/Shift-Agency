@@ -150,7 +150,7 @@ export default function ContactSection({ defaultService = 'SMM & Target Ads', ti
                         value={formData.phone}
                         onChange={handleChange}
                         required
-                        placeholder="+374 98 000 000"
+                        placeholder="041 88 24 80"
                         className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-neutral-500 focus:outline-none focus:border-[#b4f846] transition-colors text-sm"
                       />
                     </div>

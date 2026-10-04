@@ -1,5 +1,7 @@
 import express from 'express';
 import path from 'path';
+import fs from 'fs';
+import crypto from 'crypto';
 import { fileURLToPath } from 'url';
 import { GoogleGenAI } from '@google/genai';
 
@@ -10,15 +12,28 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const HOST = '0.0.0.0';
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// Persistent storage directories (.shift-data/)
+const DATA_DIR = path.join(__dirname, '.shift-data');
+const LEADS_FILE = path.join(DATA_DIR, 'leads.json');
+const UPLOADS_DIR = path.join(DATA_DIR, 'uploads');
 
-// In-memory leads storage
-const inMemoryLeads = [
+try {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+  if (!fs.existsSync(UPLOADS_DIR)) {
+    fs.mkdirSync(UPLOADS_DIR, { recursive: true });
+  }
+} catch (err) {
+  console.warn('[Persistent storage initialization notice]', err.message);
+}
+
+// Initial seed leads
+const SEED_LEADS = [
   {
     id: '1',
     name: 'Արամ Գրիգորյան',
-    phone: '+374 98 123456',
+    phone: '041 88 24 80',
     email: 'aram@techarmenia.am',
     service: 'SMM & Target Ads',
     budget: '500,000֏ / ամիս',
@@ -30,7 +45,7 @@ const inMemoryLeads = [
   {
     id: '2',
     name: 'Լիլիթ Պետրոսյան',
-    phone: '+374 77 987654',
+    phone: '043 88 24 80',
     email: 'lilit@petrosyancare.am',
     service: 'SMM դասընթաց',
     budget: 'Ակադեմիա',
@@ -41,7 +56,78 @@ const inMemoryLeads = [
   }
 ];
 
-// Gemini AI Chatbot Route
+// Helper to load leads from persistent storage
+function loadLeads() {
+  try {
+    if (fs.existsSync(LEADS_FILE)) {
+      const data = fs.readFileSync(LEADS_FILE, 'utf-8');
+      return JSON.parse(data);
+    }
+  } catch (err) {
+    console.error('[Error reading leads from persistent storage]', err);
+  }
+  return [...SEED_LEADS];
+}
+
+// Helper to save leads to persistent storage
+function saveLeads(leads) {
+  try {
+    fs.writeFileSync(LEADS_FILE, JSON.stringify(leads, null, 2), 'utf-8');
+  } catch (err) {
+    console.error('[Error saving leads to persistent storage]', err);
+  }
+}
+
+let storedLeads = loadLeads();
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Serve persistent uploads
+app.use('/uploads', express.static(UPLOADS_DIR));
+
+// Production Authentication Endpoint (Server-Side Only)
+app.post('/api/auth/login', (req, res) => {
+  const { email, password } = req.body || {};
+  const adminEmail = process.env.SHIFT_ADMIN_EMAIL;
+  const adminPassword = process.env.SHIFT_ADMIN_PASSWORD;
+  const sessionSecret = process.env.SHIFT_ADMIN_SESSION_SECRET;
+
+  // Safe failure: If required production secrets are missing on the server, reject with 503
+  if (!adminEmail || !adminPassword || !sessionSecret) {
+    console.warn('[AUTH] Attempted login but SHIFT_ADMIN_EMAIL, SHIFT_ADMIN_PASSWORD, or SHIFT_ADMIN_SESSION_SECRET is not configured on server.');
+    return res.status(503).json({
+      success: false,
+      error: 'Production authentication is not configured on this server. Contact administrator.'
+    });
+  }
+
+  // Constant-time comparison or clean credential verification
+  if (email === adminEmail && password === adminPassword) {
+    const sessionToken = crypto
+      .createHmac('sha256', sessionSecret)
+      .update(`${email}:${Date.now()}`)
+      .digest('hex');
+
+    return res.json({
+      success: true,
+      token: sessionToken,
+      user: {
+        email,
+        name: 'Shift Administrator',
+        role: 'Super Administrator',
+        loggedInAt: new Date().toISOString()
+      }
+    });
+  }
+
+  return res.status(401).json({
+    success: false,
+    error: 'Սխալ էլ․ հասցե կամ գաղտնաբառ։'
+  });
+});
+
+// Gemini AI Chatbot Route (Server-Side Proxy)
 app.post('/api/chat', async (req, res) => {
   const { message, history } = req.body || {};
   const apiKey = process.env.GEMINI_API_KEY;
@@ -60,7 +146,8 @@ app.post('/api/chat', async (req, res) => {
 - Անվանում: Shift Marketing Agency & Academy
 - Կարգախոս: «Մարքեթինգ, որը բիզնեսը վերածում է ճանաչելի բրենդի և իրական վաճառքի ⚡»
 - Ծառայություններ՝ SMM (սոցիալական մեդիա մարքեթինգ), Բրենդինգ և Վիզուալ Ինքնություն, Կրեատիվ Կոնտենտ (Reels, TikTok, Photo/Video), Target Ads (Meta, Google, TikTok Ads), Վեբ Ծրագրավորում (React, Next.js, E-commerce)։
-- Ակադեմիա / Դասընթացներ՝ Պրակտիկ SMM դասընթաց (15 դաս + ավարտական քննություն + պորտֆոլիո + սերտիֆիկատ), Target Ads ինտենսիվ, Բրենդինգ և Կոնտենտ։
+- Կոնտակտներ՝ 041 88 24 80, 043 88 24 80, WhatsApp / Viber (+37443882480)։ Գրասենյակ՝ Աբովյան, Հայաստան։
+- Դասընթացներ՝ Պրակտիկ SMM դասընթաց (18 դաս + քննություն), Target Ads ինտենսիվ, Բրենդինգ, Կոմերցիոն լուսանկարչություն։
 - Պատասխանեք սիրալիր, պրոֆեսիոնալ և դրդեք հաճախորդին թողնել իր հեռախոսահամարը կամ ամրագրել անվճար խորհրդատվություն։`;
 
       const formattedHistory = Array.isArray(history)
@@ -85,16 +172,16 @@ app.post('/api/chat', async (req, res) => {
   const query = (message || '').toLowerCase();
   let reply = 'Բարև Ձեզ։ Ես Shift Marketing Agency-ի AI օգնականն եմ ⚡։ Ինչպե՞ս կարող եմ օգնել Ձեր բիզնեսին։';
   if (query.includes('դաս') || query.includes('smm')) {
-    reply = 'Մեր SMM դասընթացը բաղկացած է 15 գործնական դասերից, պորտֆոլիոյի պատրաստումից և Meta Ads-ի խորացված պրակտիկայից։';
+    reply = 'Մեր SMM դասընթացը բաղկացած է 18 գործնական դասերից, պորտֆոլիոյի պատրաստումից և Meta Ads-ի խորացված պրակտիկայից։ Կապ՝ 041 88 24 80։';
   } else if (query.includes('գին') || query.includes('արժեք')) {
-    reply = 'Գները հաշվարկվում են անհատական՝ ըստ Ձեր բիզնեսի նպատակների։ Կարող եք օգտվել մեր կայքի ինտերակտիվ հաշվիչից կամ թողնել Ձեր կոնտակտները։';
+    reply = 'Գները հաշվարկվում են անհատական՝ ըստ Ձեր բիզնեսի նպատակների։ Կարող եք օգտվել մեր կայքի ինտերակտիվ հաշվիչից կամ զանգահարել 041 88 24 80 / 043 88 24 80։';
   }
   return res.json({ reply });
 });
 
-// Leads API
+// Leads API (Backed by persistent .shift-data/)
 app.get('/api/leads', (req, res) => {
-  res.json({ leads: inMemoryLeads });
+  res.json({ leads: storedLeads });
 });
 
 app.post('/api/leads', (req, res) => {
@@ -112,15 +199,17 @@ app.post('/api/leads', (req, res) => {
     source: leadData.source || 'Website'
   };
 
-  inMemoryLeads.unshift(newLead);
+  storedLeads.unshift(newLead);
+  saveLeads(storedLeads);
   res.json({ success: true, lead: newLead });
 });
 
 app.patch('/api/leads/:id', (req, res) => {
   const { id } = req.params;
-  const lead = inMemoryLeads.find(l => l.id === id);
+  const lead = storedLeads.find(l => l.id === id);
   if (lead) {
     Object.assign(lead, req.body);
+    saveLeads(storedLeads);
     res.json({ success: true, lead });
   } else {
     res.status(404).json({ error: 'Lead not found' });
@@ -129,9 +218,10 @@ app.patch('/api/leads/:id', (req, res) => {
 
 app.delete('/api/leads/:id', (req, res) => {
   const { id } = req.params;
-  const index = inMemoryLeads.findIndex(l => l.id === id);
+  const index = storedLeads.findIndex(l => l.id === id);
   if (index !== -1) {
-    inMemoryLeads.splice(index, 1);
+    storedLeads.splice(index, 1);
+    saveLeads(storedLeads);
     res.json({ success: true });
   } else {
     res.status(404).json({ error: 'Lead not found' });
@@ -153,7 +243,8 @@ app.post('/api/register', (req, res) => {
     createdAt: new Date().toISOString(),
     source: 'Course Registration Form'
   };
-  inMemoryLeads.unshift(newLead);
+  storedLeads.unshift(newLead);
+  saveLeads(storedLeads);
   res.json({ success: true, message: 'Հայտը հաջողությամբ ընդունված է։', data: newLead });
 });
 
@@ -179,4 +270,5 @@ app.get('*', (req, res) => {
 
 app.listen(PORT, HOST, () => {
   console.log(`Shift Marketing Agency server running on http://${HOST}:${PORT}`);
+  console.log(`Persistent storage active at: ${DATA_DIR}`);
 });

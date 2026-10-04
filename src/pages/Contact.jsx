@@ -53,15 +53,15 @@ export default function Contact() {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
     'name': 'Shift Marketing Agency Contact',
-    'description': 'Contact Shift Marketing Agency in Yerevan for free consultation, SMM proposals, and academy registration.',
+    'description': 'Contact Shift Marketing Agency in Abovyan for free consultation, SMM proposals, and academy registration.',
     'mainEntity': {
       '@type': 'LocalBusiness',
       'name': 'Shift Marketing Agency',
-      'telephone': '+37498000000',
+      'telephone': ['+37441882480', '+37443882480'],
       'email': 'mkheyanagency@gmail.com',
       'address': {
         '@type': 'PostalAddress',
-        'addressLocality': 'Yerevan',
+        'addressLocality': 'Abovyan',
         'addressCountry': 'AM'
       }
     }
@@ -73,8 +73,8 @@ export default function Contact() {
         title={lang === 'hy' ? 'Կապ & Գրանցում — Shift Marketing' : 'Contact & Consultation'}
         description={
           lang === 'hy'
-            ? 'Կապ հաստատեք Shift Marketing Agency-ի հետ։ Ամրագրեք անվճար ստրատեգիական զանգ, գրանցվեք SMM դասընթացին կամ այցելեք մեր գրասենյակ Երևանում։'
-            : 'Contact Shift Marketing Agency in Yerevan. Book a free 30-minute growth strategy call or register for the SMM Academy today.'
+            ? 'Կապ հաստատեք Shift Marketing Agency-ի հետ։ Ամրագրեք անվճար ստրատեգիական զանգ, գրանցվեք SMM դասընթացին կամ այցելեք մեր գրասենյակ Աբովյանում։'
+            : 'Contact Shift Marketing Agency in Abovyan. Book a free 30-minute growth strategy call or register for the SMM Academy today.'
         }
         schema={contactSchema}
       />
@@ -100,19 +100,53 @@ export default function Contact() {
             <div className="p-8 rounded-3xl glass-panel border border-white/10 space-y-6">
               <h3 className="text-xl font-black text-white">Պաշտոնական Կոնտակտներ</h3>
 
-              <div className="space-y-4 text-sm text-neutral-300">
+              <div className="space-y-3 text-sm text-neutral-300">
                 <a
-                  href="tel:+37498000000"
+                  href="tel:+37441882480"
                   className="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-[#b4f846]/40 transition-colors"
                 >
                   <div className="w-10 h-10 rounded-xl bg-[#b4f846]/10 text-[#b4f846] flex items-center justify-center shrink-0">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <span className="text-[10px] text-neutral-500 uppercase font-bold block">Հեռախոս</span>
-                    <span className="font-bold text-white">+374 (98) 00-00-00</span>
+                    <span className="text-[10px] text-neutral-500 uppercase font-bold block">Հեռախոս (Գիծ 1)</span>
+                    <span className="font-bold text-white">041 88 24 80</span>
                   </div>
                 </a>
+
+                <a
+                  href="tel:+37443882480"
+                  className="flex items-center gap-3 p-3.5 rounded-xl bg-white/[0.03] border border-white/5 hover:border-[#b4f846]/40 transition-colors"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-[#b4f846]/10 text-[#b4f846] flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="text-[10px] text-neutral-500 uppercase font-bold block">Հեռախոս (Գիծ 2)</span>
+                    <span className="font-bold text-white">043 88 24 80</span>
+                  </div>
+                </a>
+
+                {/* Direct Messengers */}
+                <div className="grid grid-cols-2 gap-3 pt-1">
+                  <a
+                    href="https://wa.me/37443882480"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex items-center justify-center gap-2 p-3 rounded-xl bg-[#25D366]/10 hover:bg-[#25D366]/20 border border-[#25D366]/30 text-white font-bold text-xs transition-colors"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#25D366] animate-pulse" />
+                    <span>WhatsApp</span>
+                  </a>
+
+                  <a
+                    href="viber://chat?number=%2B37443882480"
+                    className="flex items-center justify-center gap-2 p-3 rounded-xl bg-[#7360F2]/10 hover:bg-[#7360F2]/20 border border-[#7360F2]/30 text-white font-bold text-xs transition-colors"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#7360F2]" />
+                    <span>Viber</span>
+                  </a>
+                </div>
 
                 <a
                   href="mailto:mkheyanagency@gmail.com"
@@ -133,7 +167,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <span className="text-[10px] text-neutral-500 uppercase font-bold block">Գրասենյակ</span>
-                    <span className="font-bold text-white">Երևան, Հայաստան</span>
+                    <span className="font-bold text-white">{lang === 'hy' ? 'Աբովյան, Հայաստան' : 'Abovyan, Armenia'}</span>
                   </div>
                 </div>
               </div>
@@ -231,7 +265,7 @@ export default function Contact() {
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                        placeholder="+374 98 000 000"
+                        placeholder="041 88 24 80"
                         className="w-full px-4 py-3 rounded-xl bg-white/[0.04] border border-white/10 text-white placeholder-neutral-500 text-xs focus:outline-none focus:border-[#b4f846]"
                       />
                     </div>
@@ -335,8 +369,8 @@ export default function Contact() {
         {/* Map Embed */}
         <div className="rounded-3xl overflow-hidden glass-panel border border-white/10 p-2">
           <iframe
-            title="Yerevan Location Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d97561.43900350993!2d44.4371492!3d40.1533693!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x406aa2dab8fc8b5b%3A0x3d1479ae87da526a!2sYerevan%2C%20Armenia!5e0!3m2!1sen!2sam!4v1700000000000!5m2!1sen!2sam"
+            title="Abovyan Location Map"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48698.81428283597!2d44.6041071!3d40.2743844!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4041a129d2f2b3e5%3A0x3c27e85c88b69da4!2sAbovyan%2C%20Armenia!5e0!3m2!1sen!2sam!4v1700000000000!5m2!1sen!2sam"
             className="w-full h-80 rounded-2xl border-0 grayscale invert contrast-125 opacity-80"
             loading="lazy"
           />

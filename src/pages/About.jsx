@@ -32,7 +32,7 @@ export default function About() {
             ? 'Shift Marketing Agency-ի պատմությունը, փիլիսոփայությունը և պրոֆեսիոնալ թիմը՝ SMM մասնագետներ, թիրախոլոգներ, դիզայներներ և վեբ մշակողներ։'
             : 'Get to know Shift Marketing Agency: our mission, values, and talented team of digital strategists, targetologists, and designers in Armenia.'
         }
-        keywords="Shift agency team, marketing experts Armenia, Davit Mkheyan, SMM specialists Yerevan"
+        keywords="Shift agency team, marketing experts Armenia, Davit Mkheyan, SMM specialists Abovyan"
         schema={aboutSchema}
       />
 

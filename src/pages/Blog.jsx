@@ -47,7 +47,7 @@ export default function Blog() {
             ? 'Օգտակար հոդվածներ Instagram ալգորիթմների, TikTok վիրուսային տեսանյութերի, Meta Ads Manager-ի և վաճառքների ավելացման մասին։'
             : 'Actionable marketing guides on Instagram growth, viral TikTok hooks, Meta ad optimization, and business scaling by Shift Agency.'
         }
-        keywords="SMM blog Armenia, Instagram algorithms 2026, TikTok marketing Yerevan, Meta ads guide Armenia"
+        keywords="SMM blog Armenia, Instagram algorithms 2026, TikTok marketing Abovyan, Meta ads guide Armenia"
         schema={blogSchema}
       />
       {/* Header */}

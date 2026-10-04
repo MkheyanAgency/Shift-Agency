@@ -50,7 +50,7 @@ export default function Portfolio() {
             ? 'Shift Marketing Agency-ի իրականացրած լավագույն նախագծերը, Before/After աճի ցուցանիշները, ROI և վաճառքների բազմապատկումը։'
             : 'Explore proven client case studies, verified Before/After metrics, and high-ROI digital campaigns by Shift Marketing Agency.'
         }
-        keywords="Shift portfolio, SMM cases Yerevan, marketing agency Armenia, web development cases, Meta ads results"
+        keywords="Shift portfolio, SMM cases Abovyan, marketing agency Armenia, web development cases, Meta ads results"
         schema={portfolioSchema}
       />
 
@@ -116,100 +116,122 @@ export default function Portfolio() {
         {/* Portfolio Cases Grid */}
         <motion.div layout className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <AnimatePresence>
-            {filteredCases.map((item) => (
-              <motion.div
-                key={item.id}
-                layout
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                transition={{ duration: 0.35 }}
-                className="glass-panel border border-white/10 rounded-3xl overflow-hidden flex flex-col justify-between group hover:border-[#b4f846]/40 transition-colors"
-              >
-                <div className="p-6 sm:p-8 space-y-6">
-                  {/* Top info */}
-                  <div className="flex items-center justify-between gap-3">
-                    <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-[#b4f846]/10 text-[#b4f846] border border-[#b4f846]/20">
-                      {lang === 'hy' ? item.tagHy : item.tagEn}
-                    </span>
-                    <span className="text-xs text-neutral-400 font-medium">
-                      Ժամկետ՝ {item.duration}
-                    </span>
-                  </div>
-
-                  <div>
-                    <h3 className="text-2xl font-black text-white group-hover:text-[#b4f846] transition-colors">
-                      {lang === 'hy' ? item.titleHy : item.titleEn}
-                    </h3>
-                    <p className="text-xs sm:text-sm text-neutral-300 mt-2 leading-relaxed">
-                      {lang === 'hy' ? item.shortDescHy : item.shortDescEn}
-                    </p>
-                  </div>
-
-                  {/* Interactive Before / After Slider */}
-                  <div className="space-y-2">
-                    <div className="flex items-center justify-between text-[11px] font-bold uppercase text-neutral-400">
-                      <span>Ինտերակտիվ Before / After</span>
-                      <span className="text-[#b4f846]">Քաշեք սլայդերը ↔</span>
-                    </div>
-                    <div className="rounded-2xl overflow-hidden border border-white/10 aspect-[16/9] relative">
-                      <BeforeAfterSlider
-                        beforeImage={item.beforeImage}
-                        afterImage={item.afterImage}
-                        beforeLabel="ՄԻՆՉ ՄԵԶ"
-                        afterLabel="SHIFT-ԻՑ ՀԵՏՈ"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Metrics Comparison Box */}
-                  <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-white/[0.03] border border-white/5">
-                    <div className="space-y-1">
-                      <span className="text-[10px] font-bold uppercase text-neutral-400 block">Մինչ Մեզ</span>
-                      <div className="text-xs text-neutral-300">
-                        Լսարան՝ <span className="font-bold text-neutral-200">{item.beforeMetrics.followers}</span>
-                      </div>
-                      <div className="text-xs text-neutral-300">
-                        Ամսական Լիդեր՝ <span className="font-bold text-neutral-200">{item.beforeMetrics.leads}</span>
-                      </div>
-                    </div>
-                    <div className="space-y-1 border-l border-white/10 pl-3">
-                      <span className="text-[10px] font-bold uppercase text-[#b4f846] block">Shift-ից Հետո ⚡</span>
-                      <div className="text-xs text-white">
-                        Լսարան՝ <span className="font-black text-[#b4f846]">{item.afterMetrics.followers}</span>
-                      </div>
-                      <div className="text-xs text-white">
-                        Լիդեր՝ <span className="font-black text-[#b4f846]">{item.afterMetrics.leads}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Services pills */}
-                  <div className="flex flex-wrap gap-1.5 pt-1">
-                    {(lang === 'hy' ? item.servicesUsedHy : item.servicesUsedEn).map((srv, idx) => (
-                      <span key={idx} className="px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-white/5 text-neutral-300 border border-white/5">
-                        {srv}
+            {filteredCases.length === 0 ? (
+              <div className="col-span-full py-16 text-center rounded-3xl glass-panel border border-white/10 space-y-3">
+                <p className="text-base font-bold text-white">
+                  {lang === 'hy' ? 'Տվյալ կատեգորիայում դեռևս նախագծեր չկան' : 'No projects found in this category'}
+                </p>
+                <p className="text-xs text-neutral-400">
+                  {lang === 'hy' ? 'Ընտրեք այլ բաժին կամ դիտեք բոլոր քեյսերը։' : 'Select another category or view all cases.'}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setActiveCategory('all')}
+                  className="btn-neon px-5 py-2 rounded-xl text-xs font-bold inline-flex items-center gap-2 mt-2"
+                >
+                  {lang === 'hy' ? 'Դիտել Բոլորը' : 'View All Cases'}
+                </button>
+              </div>
+            ) : (
+              filteredCases.map((item) => (
+                <motion.div
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.35 }}
+                  className="glass-panel border border-white/10 rounded-3xl overflow-hidden flex flex-col justify-between group hover:border-[#b4f846]/40 transition-colors"
+                >
+                  <div className="p-6 sm:p-8 space-y-6">
+                    {/* Top info */}
+                    <div className="flex items-center justify-between gap-3">
+                      <span className="px-3.5 py-1 rounded-full text-xs font-bold bg-[#b4f846]/10 text-[#b4f846] border border-[#b4f846]/20">
+                        {lang === 'hy' ? item.tagHy : item.tagEn}
                       </span>
-                    ))}
+                      <span className="text-xs text-neutral-400 font-medium">
+                        {lang === 'hy' ? `Ժամկետ՝ ${item.duration || '—'}` : `Duration: ${item.duration || '—'}`}
+                      </span>
+                    </div>
+
+                    <div>
+                      <h3 className="text-2xl font-black text-white group-hover:text-[#b4f846] transition-colors">
+                        {lang === 'hy' ? item.titleHy : item.titleEn}
+                      </h3>
+                      <p className="text-xs sm:text-sm text-neutral-300 mt-2 leading-relaxed">
+                        {lang === 'hy' ? item.shortDescHy : item.shortDescEn}
+                      </p>
+                    </div>
+
+                    {/* Interactive Before / After Slider */}
+                    <div className="space-y-2">
+                      <div className="flex items-center justify-between text-[11px] font-bold uppercase text-neutral-400">
+                        <span>{lang === 'hy' ? 'Ինտերակտիվ Before / After' : 'Interactive Before / After'}</span>
+                        <span className="text-[#b4f846]">{lang === 'hy' ? 'Քաշեք սլայդերը ↔' : 'Drag slider ↔'}</span>
+                      </div>
+                      <div className="rounded-2xl overflow-hidden border border-white/10 aspect-[16/9] relative">
+                        <BeforeAfterSlider
+                          beforeImage={item.beforeImage}
+                          afterImage={item.afterImage}
+                          beforeLabel={lang === 'hy' ? 'ՄԻՆՉ ՄԵԶ' : 'BEFORE'}
+                          afterLabel={lang === 'hy' ? 'SHIFT-ԻՑ ՀԵՏՈ' : 'AFTER SHIFT'}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Metrics Comparison Box */}
+                    <div className="grid grid-cols-2 gap-3 p-4 rounded-2xl bg-white/[0.03] border border-white/5">
+                      <div className="space-y-1">
+                        <span className="text-[10px] font-bold uppercase text-neutral-400 block">
+                          {lang === 'hy' ? 'Մինչ Մեզ' : 'Before Shift'}
+                        </span>
+                        <div className="text-xs text-neutral-300">
+                          {lang === 'hy' ? 'Լսարան՝' : 'Followers:'} <span className="font-bold text-neutral-200">{item.beforeMetrics?.followers || '—'}</span>
+                        </div>
+                        <div className="text-xs text-neutral-300">
+                          {lang === 'hy' ? 'Ամսական Լիդեր՝' : 'Leads:'} <span className="font-bold text-neutral-200">{item.beforeMetrics?.leads || '—'}</span>
+                        </div>
+                      </div>
+                      <div className="space-y-1 border-l border-white/10 pl-3">
+                        <span className="text-[10px] font-bold uppercase text-[#b4f846] block">
+                          {lang === 'hy' ? 'Shift-ից Հետո ⚡' : 'After Shift ⚡'}
+                        </span>
+                        <div className="text-xs text-white">
+                          {lang === 'hy' ? 'Լսարան՝' : 'Followers:'} <span className="font-black text-[#b4f846]">{item.afterMetrics?.followers || '—'}</span>
+                        </div>
+                        <div className="text-xs text-white">
+                          {lang === 'hy' ? 'Լիդեր՝' : 'Leads:'} <span className="font-black text-[#b4f846]">{item.afterMetrics?.leads || '—'}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Services pills */}
+                    <div className="flex flex-wrap gap-1.5 pt-1">
+                      {((lang === 'hy' ? item.servicesUsedHy : item.servicesUsedEn) || []).map((srv, idx) => (
+                        <span key={idx} className="px-2.5 py-1 rounded-lg text-[10px] font-semibold bg-white/5 text-neutral-300 border border-white/5">
+                          {srv}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                </div>
 
-                {/* Card footer CTA */}
-                <div className="p-6 bg-white/[0.02] border-t border-white/10 flex items-center justify-between">
-                  <span className="text-xs text-neutral-400">
-                    Հաճախորդ՝ <strong className="text-white">{item.clientName}</strong>
-                  </span>
+                  {/* Card footer CTA */}
+                  <div className="p-6 bg-white/[0.02] border-t border-white/10 flex items-center justify-between">
+                    <span className="text-xs text-neutral-400">
+                      {lang === 'hy' ? 'Հաճախորդ՝' : 'Client:'} <strong className="text-white">{item.clientName}</strong>
+                    </span>
 
-                  <Link
-                    to={`/portfolio/${item.slug}`}
-                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-black bg-white/5 hover:bg-[#b4f846] hover:text-black text-white transition-all min-h-[44px]"
-                  >
-                    <span>Դիտել Մանրամասն</span>
-                    <ArrowUpRight className="w-4 h-4" />
-                  </Link>
-                </div>
-              </motion.div>
-            ))}
+                    <Link
+                      to={`/portfolio/${item.slug}`}
+                      className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-black bg-white/5 hover:bg-[#b4f846] hover:text-black text-white transition-all min-h-[44px]"
+                    >
+                      <span>{lang === 'hy' ? 'Դիտել Մանրամասն' : 'View Case Study'}</span>
+                      <ArrowUpRight className="w-4 h-4" />
+                    </Link>
+                  </div>
+                </motion.div>
+              ))
+            )}
           </AnimatePresence>
         </motion.div>
       </div>

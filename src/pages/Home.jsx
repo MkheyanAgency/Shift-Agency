@@ -55,7 +55,7 @@ export default function Home({ onOpenConsultation }) {
       'url': 'https://shiftagency.am',
       'logo': 'https://shiftagency.am/assets/shift-logo.png',
       'email': 'mkheyanagency@gmail.com',
-      'telephone': '+37498000000',
+      'telephone': ['+37441882480', '+37443882480'],
       'sameAs': [
         'https://instagram.com',
         'https://facebook.com',
@@ -68,13 +68,13 @@ export default function Home({ onOpenConsultation }) {
       '@id': 'https://shiftagency.am/#localbusiness',
       'name': 'Shift Marketing Agency',
       'image': 'https://shiftagency.am/assets/shift-logo.png',
-      'telephone': '+37498000000',
+      'telephone': ['+37441882480', '+37443882480'],
       'email': 'mkheyanagency@gmail.com',
       'priceRange': '֏֏֏',
       'address': {
         '@type': 'PostalAddress',
-        'streetAddress': 'Yerevan City Center',
-        'addressLocality': 'Yerevan',
+        'streetAddress': 'Abovyan Center',
+        'addressLocality': 'Abovyan',
         'addressCountry': 'AM'
       }
     },
@@ -164,7 +164,7 @@ export default function Home({ onOpenConsultation }) {
             ? 'Shift Marketing Agency. Մարքեթինգ, որը բիզնեսը վերածում է ճանաչելի բրենդի և իրական վաճառքի ⚡ SMM, թիրախային գովազդ, վեբ մշակում և դասընթացներ։'
             : 'Shift Marketing Agency transforms businesses into high-converting brands with proven SMM, Meta/Google ads, creative content, and accredited courses.'
         }
-        keywords="Shift marketing agency, SMM Armenia, SMM dasentac, Target ads Yerevan, branding Armenia, web development Armenia"
+        keywords="Shift marketing agency, SMM Armenia, SMM dasentac, Target ads Abovyan, branding Armenia, web development Armenia"
         schema={homeSchemas}
       />
 
